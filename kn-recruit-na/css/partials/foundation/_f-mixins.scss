@@ -1,0 +1,253 @@
+@use "f-variables" as v;
+
+// 一連のスタイルやパラメータ化を定義する
+// @include m.〇〇で呼び出してください
+
+// ▶ Define theme color ---------------------------------------
+// テーマのカラーセットを定義する
+// [ 引数 : f-base.css参照 ]
+// --color-primary    >> 第一カラー
+// --color-secondary  >> 第二カラー
+// --color-tertiary   >> 第三カラー
+// --color-text       >> テキストカラー
+// --color-surface    >> サーフェスカラー
+// --color-stroke     >> 線・輪郭カラー
+// --color-bg         >> 背景カラー
+// --color-link       >> リンク文字カラー
+@mixin theme($color-primary, $color-secondary, $color-tertiary, $color-text, $color-surface, $color-stroke, $color-bg, $color-link) {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-tertiary: #{$color-tertiary};
+  --color-text: #{$color-text};
+  --color-surface: #{$color-surface};
+  --color-stroke: #{$color-stroke};
+  --color-bg: #{$color-bg};
+  --color-link: #{$color-link};
+}
+
+// ▶ Media query ---------------------------------------
+// メディアクエリのブレイクポイントを定義する
+// [ 引数 : ブレイクポイントの値を渡す（f-variables.scss参照） ]
+@mixin mq($bp) {
+  @media #{map-get(v.$breakpoints, $bp)} {
+    @content;
+  }
+}
+
+// ▶ Page ID selector ---------------------------------------
+// wpのpage IDによってスタイリングしたい場合に使用する
+// [ 引数 : wpのpage IDを渡す ]
+@mixin page-id-selector($pid) {
+  .page-id-#{$pid} {
+    @content;
+  }
+}
+
+// ▶ Element outline ---------------------------------------
+// 制作中に要素のアウトラインを確認する
+// [ 引数 : 1を渡すとon、それ以外ならoff ]
+@mixin outline($state, $color:red) {
+  @if $state == 1 {
+    border: 1px solid $color;
+  }
+}
+
+// ▶ Destyle ---------------------------------------
+// デフォルトのスタイリングを解除する
+// [ 引数 : なし ]
+@mixin destyle-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// ▶ Text ---------------------------------------
+// テキストの大きさ、色、font-family、太さ、大文字の可否を定義する
+// [ 引数 : f-variables.scssなど参照 ]
+// size         >> f-variables.scssのfont size変数名。デフォルト値はv.$regular
+// color        >> f-variables.scssのcolor系変数またはf-base.cssのrootに定義したカラー。デフォルト値はvar(--color-text)
+// lang         >> f-variables.scssのfont系変数。デフォルト値はv.$default
+// weight       >> font-weightプロパティの値。デフォルト値は500（セミボールド）
+// t-transform  >> text-transformプロパティの値。デフォルト値はnone
+// xd           >> @include f_around(フォントサイズ, 行送り , 太さ, トラッキング);
+@mixin text($size:v.$regular, $color:var(--color-text), $lang:v.$default, $weight:500, $t-transform:none) {
+  color: $color;
+  font-size: $size;
+  font-family: $lang;
+  font-weight: $weight;
+  text-transform: $t-transform;
+}
+@mixin f_around($pixels, $height: false, $weight: false , $spacing: false) {
+	font-size: $pixels * 1px;
+	@if $weight {
+		font-weight: $weight;
+	}
+	@if $height {
+		line-height: $height / $pixels;
+	}
+	@if $spacing {
+		letter-spacing: ($spacing / 1000) * 1em;
+	}
+}
+
+// ▶ Flex ---------------------------------------
+// 一部のflexレイアウトを定義する
+// [ 引数 : flexレイアウトのプロパティ値 ]
+// direction        >> flex-directionプロパティの値。デフォルト値はrow
+// wrap             >> flex-wrapプロパティの値。デフォルト値はwrap
+// justify-content  >> justify-contentプロパティの値。デフォルト値はspace-between
+// align-items      >> align-itemsプロパティの値。デフォルト値はcenter
+@mixin flex($direction:row, $wrap:wrap, $justify-content:space-between, $align-items:center) {
+  display: flex;
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+// ▶ Column ---------------------------------------
+// 横並びコンテンツのカラム数（幅）を定義する
+// [ 引数 : 正数（小数を含む1以上の数字） ]
+@mixin column($cols) {
+  width: calc(100% / $cols);
+}
+
+// ▶ Position ---------------------------------------
+// positionプロパティを使用して配置を定義する
+// [ 引数 : positionおよびinsetプロパティの値 ]
+// pos      >> positionプロパティの値。デフォルト値はabsolute
+// top      >> insetプロパティの値。デフォルト値は0
+// right    >> insetプロパティの値。デフォルト値は0
+// bottom   >> insetプロパティの値。デフォルト値は0
+// left     >> insetプロパティの値。デフォルト値は0
+// * top,right,bottom,left全ての引数が0の場合、margin: auto（中央寄せ）を追加する
+@mixin position($pos: absolute, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $pos;
+  @if $top != null {
+    top: $top;
+  }
+  @if $right != null {
+    right: $right;
+  }
+  @if $bottom != null {
+    bottom: $bottom;
+  }
+  @if $left != null {
+    left: $left;
+  }
+  @if $top == 0 and $right == 0 and $bottom == 0 and $left == 0 {
+    margin: auto;
+  }
+}
+
+// ▶ Stack ---------------------------------------
+// タテに並ぶ要素同士の間隔を定義する
+// [ 引数 : f-variable.cssのmargin, padding変数名など ]
+@mixin stack($space) {
+  > * + * {
+    margin-top: $space;
+  }
+}
+
+// ▶ Cluster ---------------------------------------
+// ヨコに並ぶ要素同士の間隔を定義する
+// [ 引数 : f-variables.scssのmargin, padding変数名など ]
+@mixin cluster($gap) {
+  gap: $gap;
+}
+
+// ▶ Animation ---------------------------------------
+// アニメーションの動作を定義する
+// [ 引数 : animation系プロパティの値 ]
+// nam      >> animation-nameプロパティの値。f-animation.scssで作成したアニメーション名を渡す
+// dur      >> animation-durationプロパティの値。デフォルト値は1s
+// tim      >> animation-timing-functionプロパティの値。デフォルト値はease-in-out
+// ite      >> animation-iteration-countプロパティの値。デフォルト値は1
+// dir      >> animation-directionプロパティの値。デフォルト値はnormal
+// fil      >> animation-fill-modeプロパティの値。デフォルト値はforwards
+// del      >> animation-delayプロパティの値。デフォルト値はinherit
+// * アニメーション自体はf-animation.scssで作成すること
+@mixin anime($nam, $dur: 1s, $tim: ease-in-out, $ite: 1, $dir: normal, $fil: forwards, $del:inherit) {
+  animation-name: $nam;
+  animation-duration: $dur;
+  animation-timing-function: $tim;
+  animation-iteration-count: $ite;
+  animation-direction: $dir;
+  animation-fill-mode: $fil;
+  animation-delay: $del;
+}
+
+// ▶ Background-image ---------------------------------------
+// background-image系のプロパティを定義する
+// [ 引数 : 画像のファイル名およびbackgorund系のプロパティの値 ]
+// filename       >> f-variable.scssのpath imgで指定したフォルダにアップロードした画像ファイル名
+// siz            >> backgorund-sizeプロパティの値。デフォルト値はcover
+// rep            >> background-repeatプロパティの値。デフォルト値はno-repeat
+// posX           >> background-positionプロパティの値のひとつ。デフォルト値はcenter
+// posY           >> background-posiitonプロパティの値のひとつ。デフォルト値はcenter
+@mixin bg-img($fileName, $siz:cover, $rep:no-repeat, $posX:center, $posY:center) {
+	background-image: url(v.$path + $fileName);
+  background-size: $siz;
+	background-repeat: $rep;
+	background-position: $posX $posY;
+}
+
+// ▶ Gradation ---------------------------------------
+// 2色をブレンドしたグラデーションを作成する
+// [ 引数 : HEX形式およびRGB形式、HSL形式もしくはcssのカスタムプロパティなど ]
+// direction      >> linear-gradientの値
+// topColor       >> カラー一つ目
+// bottomColor    >> カラー二つ目
+@mixin gradation($direction, $topColor, $bottomColor) {
+  background: linear-gradient($direction, $topColor, $bottomColor);
+}
+
+// ▶ Video ---------------------------------------
+// videoを全画面に配置する
+// [ 引数 : なし ]
+@mixin video {
+  height: 56.25vw;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  inset: 0;
+  width: 177.77777778vh;
+}
+
+// ▶ Overlay ---------------------------------------
+// 単色のオーバーレイを定義する（疑似要素と併用推奨）
+// [ 引数 : 色、透明度、レイヤーの順番 ]
+// color      >> cssカスタムプロパティは使用できません。f-variable.scssで定義したカラー
+// opacity    >> opacityプロパティの値。デフォルト値は0.3
+// z-index    >> z-indexプロパティの値。デフォルト値は1
+@mixin overlay($color, $opacity:.3, $z-index:1) {
+  background-color: rgba($color,$opacity);
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  z-index: $z-index;
+}
+
+// ▶ Plugin ---------------------------------------
+// contact form 7
+@mixin form-required-sign($type:any) {
+  border-radius: 5px;
+  color: v.$white;
+  display: inline-block;
+  font-size: v.$mini;
+  font-weight: bold;
+  margin-left: v.$tight;
+  padding: 0 .5rem;
+
+  @if $type == any {
+    background-color: lighten(v.$blue, 10%);
+  } @else if $type == required {
+    background-color: lighten(v.$red, 10%);
+  } @else {
+    background-color: lighten(v.$blue, 10%);
+  }
+}

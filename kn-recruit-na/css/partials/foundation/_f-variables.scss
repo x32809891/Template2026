@@ -1,0 +1,67 @@
+// 変数を定義する
+// v.$〇〇で呼び出してください
+
+// media query
+$breakpoints: (
+  1600: "screen and (max-width: 1600px)",
+  1440: "screen and (max-width: 1440px)",
+  1180: "screen and (max-width: 1180px)",
+  950: "screen and (max-width: 950px)",
+  768: "screen and (max-width: 768px)",
+  559: "screen and (max-width: 559px)",
+  425: "screen and (max-width: 425px)",
+);
+
+// path img
+$path: "../img/";
+
+// utility colors
+$black: #000000;
+$text-black: #232323;
+$white: #ffffff;
+$white-gray: #f5f5f5;
+$middle-gray: #eeeeee;
+$black-gray: #5a5a5a;
+$gray: #dddddd;
+
+// theme colors
+$theme-blue: #003F98;
+$theme-navy: #00204C;
+$theme-lightblue: #99c4ff;
+$theme-orange: #F37B4C;
+
+// utility fonts
+$default: "Helvetica Neue LT", "Helvetica Neue", Helvetica, "Hiragino Sans", "Yu Gothic", 游ゴシック体, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", メイリオ, Meiryo, sans-serif;
+$mincho: "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "MS P明朝" , "MS PMincho" , serif;
+$number: "din-2014", sans-serif;
+$en: "din-2014", sans-serif;
+
+// font size
+$ultra-large: clamp(7rem, 5rem + 2.5vw, 8rem);
+$super-large: clamp(5rem, 3rem + 2.5vw, 6rem);
+$huge: clamp(4rem, 2rem + 2.5vw, 5rem);
+$lll: clamp(3rem, 1.585rem + 3.77vw, 4rem);
+$ll: clamp(2rem, 0.585rem + 3.77vw, 3rem);
+$large: clamp(1.8rem, 1.234rem + 1.51vw, 2.2rem);
+$bigger: clamp(1.5rem, 1.075rem + 1.13vw, 1.8rem);
+$medium: clamp(1rem, 0.292rem + 1.89vw, 1.5rem);
+$regular: clamp(0.9rem, 0.766rem + 0.67vw, 1rem);
+$small: clamp(0.8rem, 0.666rem + 0.67vw, 0.9rem);
+$mini: clamp(0.7rem, 0.566rem + 0.67vw, 0.8rem);
+$micro: clamp(0.6rem, 0.466rem + 0.67vw, 0.7rem);
+
+// margin, padding
+$tight: min(8%, 1rem);
+$loose: max(3%, 2rem);
+
+// z-index
+$extra-front: 10000;
+$front: 100;
+$semi-front: 50;
+$mid: 1;
+$behind: -1;
+$back: -10;
+
+// transition
+$fast: .15s;
+$slow: .4s;

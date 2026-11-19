@@ -1,0 +1,156 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// ページのレイアウトを形成する要素を定義する
+// html
+html {
+    scroll-behavior: smooth;
+}
+
+// body
+body {
+    margin-right: auto;
+    counter-reset: number 0;
+}
+
+// loading
+.loader {
+    background-color: rgba(v.$theme-navy, 1);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100000;
+    transform: scale(1);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+
+
+    &.fade-out {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    &--inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    &--spinner {
+        width: 40px;
+        height: 40px;
+        background-color: v.$white;
+        border-radius: 100%;  
+        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px; /* 高さの半分だけ上に移動 */
+        margin-left: -20px; /* 幅の半分だけ左に移動 */
+    }
+
+    @-webkit-keyframes sk-scaleout {
+        0% { 
+            -webkit-transform: scale(0) 
+        }
+        100% {
+            -webkit-transform: scale(1.0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes sk-scaleout {
+        0% { 
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        100% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+            opacity: 0;
+        }
+    }
+}
+
+// luxy.js
+#luxy {
+    width: calc(100% - 80px) !important;
+}
+
+// container-area / front-page.php
+.l__container-area {
+    overflow: hidden;
+    &--concept {
+        width: calc(100% - 400px);
+        margin: 200px auto 300px;
+    }
+    &--layer01 {
+        background-color: v.$white-gray;
+    }
+    &--layer02 {
+        background-image: linear-gradient(140deg, rgba(v.$theme-blue, 1), rgba(v.$theme-navy, 1));
+        max-width: 90%;
+        position: relative;
+        top: -150px;
+    }
+    &--works {
+        background-color: v.$white-gray;
+        width: calc(100% - 400px);
+        margin: 0 auto 200px;
+    }
+    &--recruit {
+        width: 100%;
+    }
+    &--news {
+        width: calc(100% - 400px);
+        margin: 0 auto;
+        padding: 200px 0;
+    }
+    
+}
+
+// container-area / page-〇〇.php
+.l__container-area-page {
+    overflow: hidden;
+    // page-service.php
+    &--mission {
+        background: url(../img/page_service-bg2.jpg) no-repeat 50% 50% / cover;
+        padding: 150px 0;
+    }
+    &--service {
+        background-image: linear-gradient(140deg, rgba(v.$theme-blue, 1), rgba(v.$theme-navy, 1));
+        padding: 150px 100px;
+    }
+    
+    // page-company.php
+    &--message {
+        padding: 150px 0;
+    }
+    &--company {
+        background-color: v.$white-gray;
+        padding: 150px 0;
+    }
+    &--history {
+        background: url(../img/page_service-bg3.jpg) no-repeat 50% 50% / cover;
+        padding: 150px 0;
+    }
+    &--access {
+        background-color: v.$white-gray;
+        padding: 150px 0;
+    }
+
+    // page-recruit.php
+    &--character {
+        background: url(../img/page_service-bg4.jpg) no-repeat 50% 50% / cover;
+        padding: 150px 0;
+    }
+    &--requirements {
+        background-color: v.$white-gray;
+        padding: 150px 0;
+    }
+
+    // page-contact.php
+    &--contact {
+        padding: 150px 0;
+    }
+}

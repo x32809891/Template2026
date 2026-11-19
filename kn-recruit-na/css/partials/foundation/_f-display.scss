@@ -1,0 +1,1141 @@
+@use "f-variables" as v;
+@use "f-mixins" as m;
+
+// レスポンシブスタイルを定義する。
+// 引数のbreakpointは_f-variables.scssを参照してください
+
+/* ▶ 1600*pc */
+@include m.mq(1600) {
+    // front-page.php
+    .p__index {
+        &-concept {
+            display: block;
+            &--item {
+                margin: 0;
+                &:nth-child(1) {
+                    margin-bottom: 80px;
+                    width: 100%;
+                }
+                &:nth-child(2) {
+                    width: 100%;
+                }
+            }
+        }
+        &-service {
+            &-image {
+                &-txt {
+                    &-item {
+                        font-size: v.$bigger;
+                    }
+                }
+            }
+            &-group {
+                &-list {
+                    gap: 100px;
+                    &-item {
+                        &:nth-child(1) {
+                            margin-right: auto;
+                        }
+                        &:nth-child(2) {
+                            margin-left: auto;
+                        }
+                        &:nth-child(3) {
+                            margin-right: auto;
+                            margin-top: 0;
+                        }
+                        &:nth-child(4) {
+                            margin-left: auto;
+                        }
+                    }
+                }
+            }
+        }
+        &-recruit {
+            &--inner {
+                padding: 100px;
+            }
+            &-detail {
+                &-txt {
+                    &-item {
+                        font-size: v.$bigger;
+                    }
+                }
+            }
+        }
+    }
+
+    .c__page {
+        &-header-box {
+            &-category,
+            &-archive {
+                &-list {
+                    display: grid;
+                    align-content: center;
+                }
+            }
+        }
+    }
+}
+
+/* ▶ 1440*laptop-wide */
+@include m.mq(1440) {
+    // front-page.php
+    .l__container-area {
+        &--concept {
+            width: calc(100% - 200px);
+            margin: 100px auto 250px;
+        }
+        &--works {
+            width: calc(100% - 200px);
+            margin: 0 auto 150px;
+        }
+        &--news {
+            width: calc(100% - 200px);
+            padding: 100px 0;
+        }
+    }
+
+    .c__footer {
+        &-content {
+            &--inner {
+                display: block;
+            }
+            &-item {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+/* ▶ 1180*laptop */
+@include m.mq(1180) {
+    // front-page.php
+    .l__container-area {
+        &--layer02 {
+            top: -100px;
+        }
+    }
+
+    .c__header {
+        &-nav {
+            &.panelactive {
+                right: 0;
+                padding: 0 80px;
+            }
+            &-menu {
+                &-list {
+                    top: 20%;
+                }
+            }
+        }
+    }
+    .c__page {
+        &-header-box {
+            display: block;
+            &-breadcrumb {
+                height: 80px;
+                width: 100%;
+            }
+            &-page-menu {
+                height: 80px;
+                &-list {
+                    height: 80px;
+                    &-item {
+                        font-size: v.$small;
+                        margin: 0 1rem 0 0;
+                    }
+                }
+            }
+            &-category,
+            &-archive {
+                &-list {
+                    width: 100%;
+                    height: auto;
+                    padding: 1rem 20px;
+                }
+            }
+        }
+
+        &-works {
+            &-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        &-single-works {
+            &-content {
+                padding: 2rem 4rem;
+            }
+        }
+
+        &-news {
+            &-list {
+                &-item {
+                    width: 100%;
+                }
+            }
+        }
+
+        &-single-news {
+            &-content {
+                padding: 2rem 4rem;
+            }
+        }
+    }
+    .c__footer {
+        &-3col {
+            &--inner {
+                display: block;
+            }
+            &-btn {
+                &:nth-child(1),
+                &:nth-child(2) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .p__index {
+        &-mv {
+            &-detail {
+                &-ttl {
+                    font-size: v.$lll;
+                }
+            }
+        }
+        &-service {
+            &-image {
+                padding: 80px 0;
+                &-txt {
+                    bottom: 15%;
+                    left: 5%;
+                }
+            }
+            &-content {
+                padding-bottom: 100px;
+            }
+        }
+        &-recruit {
+            &--inner {
+                display: block;
+            }
+            &-detail {
+                &-txt {
+                    text-align: right;
+                    margin-top: -15%;
+                    margin-bottom: 2.5rem;
+                }
+            }
+            &-content {
+                margin-left: 0;
+            }
+        }
+        &-news {
+            &-box {
+                &-list {
+                    &-item {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ▶ 950*tab-wide */
+@include m.mq(950) {
+    // front-page.php
+    #luxy {
+        width: 100% !important;
+    }
+
+    .c__header {
+        &-logo {
+            left: 20px;
+        }
+        &-fixed-btn {
+            right: 70px;
+        }
+    }
+    .c__page {
+        &-header {
+            &-scroll-btn {
+                right: 48%;
+            }
+        }
+    }
+    .c__openbtn {
+        width: 70px;
+        height: 70px;
+        &.active {
+            span {
+                &:nth-of-type(1) {
+                    left: 17px;
+                    top: 55%;
+                }
+                &:nth-of-type(2) {
+                    left: 17px;
+                    top: 55%;
+                }
+            }
+        }
+        span {
+            transform: rotate(0deg);
+            &:nth-of-type(1) {
+                top: 45%;
+                right: 17px;
+            }
+            &:nth-of-type(2) {
+                top: 55%;
+                right: 17px;
+            }
+        }
+    }
+    .c__footer {
+        &-2col {
+            &--inner {
+                display: block;
+            }
+            &-btn {
+                &:nth-child(1),
+                &:nth-child(2) {
+                    width: 100%;
+                    height: 65vh;
+                }
+                &:nth-child(1) {
+                    border-right: 1px solid transparent;
+                }
+            }
+        }
+        &-content {
+            padding: 80px 40px;
+            &-menu {
+                &-list {
+                    &-item {
+                        width: calc(100% / 2);
+                    }
+                }
+            }
+        }
+        &--inner {
+            display: block;
+        }
+        &-item {
+            margin-bottom: 40px;
+        }
+        &-menu {
+            justify-content: flex-start;
+            &-list {
+                margin: 0 60px 30px 0;
+            }
+        }
+    }
+
+    .p__index {
+        &-mv {
+            &-detail {
+                &-ttl {
+                    &-jp {
+                        font-size: v.$ll;
+                    }
+                    &-en {
+                        font-size: v.$mini;
+                    }
+                }
+                &-subttl {
+                    font-size: v.$mini;
+                }
+            }
+            &-scroll-btn {
+                right: 48%;
+            }
+        }
+    }
+
+    // page-〇〇.php
+    .p__page {
+        // page-service.php
+        &-mission {
+            &-line {
+                &--catch {
+                    font-size: v.$bigger;
+                }
+                &--txt {
+                    font-size: v.$regular;
+                    margin: 0 auto;
+                    width: calc(100% - 2rem);
+                }
+            }
+        }
+        &-service {
+            &-group {
+                &-list {
+                    &-item {
+                        display: block;
+                        &--bg {
+                            margin: 0 calc(49.5% - 50vw);
+                            width: 100vw;
+                        }
+                        &-box {
+                            margin: 0;
+                            width: 100%;
+                            &-ttl {
+                                margin: 1rem 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // page-company.php
+        &-message {
+            &-box {
+                display: block;
+                &-img {
+                    width: 50%;
+                    margin: 0 auto 2rem;
+                }
+                &-line {
+                    width: calc(100% - 2rem);
+                    margin: 0 auto;
+                    &--ttl {
+                        margin-bottom: 1.5rem;
+                    }
+                }
+            }
+        }
+        &-company {
+            &-list {
+                margin: 0 1.5rem;
+            }
+        }
+        &-history {
+            &-list {
+                margin: 0 1.5rem;
+            }
+        }
+        &-access {
+            &-map {
+                margin: 0 1.5rem;
+            }
+        }
+
+        // page-recruit.php
+        &-character {
+            &-grid {
+                &-list {
+                    gap: 25px;
+                    padding: 0 1.5rem;
+                }
+            }
+        }
+        &-requirements {
+            &-list {
+                margin: 0 1.5rem;
+            }
+        }
+    }
+}
+
+/* ▶ 768*tab */
+@include m.mq(768) {
+    // front-page.php
+    .l__container-area {
+        &--concept {
+            width: calc(100% - 100px);
+            margin: 100px auto 200px;
+        }
+        &--works {
+            width: calc(100% - 100px);
+            margin: 0 auto 100px;
+        }
+        &--news {
+            width: calc(100% - 100px);
+        }
+    }
+    .l__container-area-page {
+        // page-service.php
+        &--mission {
+            padding: 100px 0;
+        }
+        &--service {
+            padding: 100px 50px;
+        }
+        // page-company.php
+        &--message {
+            padding: 100px 0;
+            margin: 0 1.5rem;
+        }
+        &--company,
+        &--history,
+        &--access {
+            padding: 100px 0;
+        }
+        // page-recruit.php
+        &--character,
+        &--requirements {
+            padding: 100px 0;
+        }
+        // page-contact.php
+        &--contact {
+            padding: 100px 0;
+        }
+    }
+
+    .c__content {
+        &-heading {
+            &--h2 {
+                margin-bottom: 30px;
+                &-en {
+                    font-size: v.$ll;
+                    letter-spacing: .3rem;
+                }
+                &-jp {
+                    font-size: v.$small;
+                }
+            }
+            &--h2-ver {
+                &-en {
+                    font-size: v.$ll;
+                    letter-spacing: .3rem;
+                }
+                &-jp {
+                    display: block;
+                    font-size: v.$small;
+                    &::after {
+                        bottom: -42%;
+                    }
+                }
+            }
+            &--h3 {
+                margin-bottom: 40px;
+            }
+        }
+        &-btn {
+            &--nm {
+                margin-top: 0;
+            }
+        }
+    }
+    .c__footer {
+        &-3col {
+            &-btn {
+                height: 475px;
+            }
+        }
+        &-map {
+            &--iframe {
+                aspect-ratio: 16 / 9;
+                width: 100%;
+                height: 425px;
+            }
+        }
+    }
+    .c__page {
+        &-header {
+            &-detail {
+                transform: translate(5%, -50%);
+                &-ttl {
+                    &--en {
+                        font-size: v.$super-large;
+                    }
+                    &--jp {
+                        font-size: v.$regular;
+                    }
+                }
+            }
+        }
+    }
+
+    .p__index {
+        &-concept {
+            &--item {
+                margin-bottom: 40px;
+            }
+            &-detail {
+                &-ttl {
+                    font-size: v.$medium;
+                }
+                &-txt {
+                    font-size: v.$regular;
+                    margin-bottom: 30px;
+                }        
+            }
+            &-gallery {
+                &-img {
+                    width: 50%;
+                    &:nth-child(1) {
+                        padding-bottom: 2.5rem;
+                        padding-right: .5rem;
+                        padding-left: .5rem;
+                    }
+                    &:nth-child(2) {
+                        padding-top: 2.5rem;
+                        padding-right: .5rem;
+                        padding-left: .5rem;
+                    }
+                }
+            }
+        }
+        &-service {
+            &-group {
+                &-list {
+                    &-item {
+                        &-detail {
+                            &-ttl {
+                                font-size: v.$bigger;
+                            }
+                            &-txt {
+                                font-size: v.$regular;
+                                width: calc(100% - 50px)
+                            }        
+                        }
+                        &-pic {
+                            &-subttl {
+                                left: 14%;
+                            }
+                            &-img {
+                                width: 80%;
+                            }
+                        }
+                        &-box {
+                            padding: 1.5rem;
+                            width: 80%;
+                            &::after {
+                                font-size: v.$super-large;
+                                top: -30%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-works {
+            &-detail {
+                &-content {
+                    &-txt {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &-recruit {
+            &--inner {
+                padding: 100px 50px;
+            }
+            &-detail {
+                &-txt {
+                    margin-top: -20%;
+                }
+            }
+        }
+    }
+
+    // page-〇〇.php
+    .p__page {
+        // page-service.php
+        &-service {
+            &-group {
+                &-list {
+                    &-item {
+                        &-pic {
+                            width: 100%;
+                            &-img {
+                                margin: 0 auto;
+                                width: 50%;
+                                min-width: 100%;
+                                min-height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // page-company.php
+        &-company {
+            &-list {
+                padding: 3rem;
+            }
+        }
+        &-history {
+            &-list {
+                padding: 3rem;
+            }
+        }
+
+        // page-recruit.php
+        &-character {
+            &-grid {
+                &-list {
+                    &-item {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &-requirements {
+            &-list {
+                padding: 3rem;
+            }
+        }
+
+        // page-contact.php
+        &-contact {
+            &-form {
+                &-txt {
+                    margin-bottom: 40px;
+                }
+                &-list {
+                    .policy {
+                        &--inner {
+                            padding: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ▶ 559*sp-wide */
+@include m.mq(559) {
+    // front-page.php
+    .l__container-area {
+        &--concept {
+            width: calc(100% - 50px);
+            margin: 50px auto 125px;
+        }
+        &--layer02 {
+            top: -60px;
+        }
+        &--works {
+            width: calc(100% - 50px);
+            margin: 0 auto 80px;
+        }
+        &--news {
+            width: calc(100% - 50px);
+            padding: 80px 0;
+        }
+    }
+    .l__container-area-page {
+        // page-service.php
+        &--mission {
+            height: auto;
+        }
+        &--service {
+            padding: 80px 25px;
+        }
+    }
+
+    .c__header {
+        &-logo {
+            top: 10px;
+            &-txt {
+                a {
+                    font-size: v.$bigger;
+                }
+            }
+        }
+        &-fixed-btn {
+            display: none;
+            right: 60px;
+            &--link {
+                width: 150px;
+                height: 60px;
+            }
+        }
+        &-sns-btn {
+            bottom: 60px;
+            right: 0;
+            a {
+                width: 60px;
+                height: 60px;
+                img {
+                    width: 20px;
+                    height: 20px;
+                    object-fit: cover;
+                }
+            }
+        }
+        &-nav {
+            &.panelactive {
+                padding: 0 40px;
+            }
+        }
+    }
+    .c__page {
+        &-header {
+            &-scroll-btn {
+                bottom: 6%;
+                font-size: .6rem;
+                &::before,
+                &::after {
+                    height: 100px;
+                    bottom: -50px;
+                }
+            }
+            &-detail {
+                &-ttl {
+                    &--en {
+                        font-size: v.$lll;
+                    }
+                    &--jp {
+                        font-size: v.$small;
+                    }
+                }
+            }
+            &-box {
+                &-breadcrumb {
+                    &-list {
+                        padding-left: 20px;
+                    }
+                }
+                &-page {
+                    &-menu {
+                        &-list {
+                            padding-left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-works {
+            margin: 100px auto;
+            &-list {
+                grid-template-columns: 1fr;
+                margin: 0 auto 40px;
+                &-item {
+                    margin: 0 0 1.5rem;
+                }
+            }
+        }
+
+        &-single-works {
+            margin: 100px auto;
+            &-content {
+                padding: 1.5rem 1rem;
+                margin: 0;
+            }
+        }
+
+        &-news {
+            margin: 100px auto;
+            &-list {
+                &-item {
+                    gap: 10px;
+                    padding: 1rem 1.25rem 1rem 0;
+                    &--thumbnail {
+                        margin-bottom: 1rem;
+                        a {
+                            img {
+                                height: 125px;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &-single-news {
+            margin: 100px auto;
+            &-content {
+                padding: 1.5rem 1rem;
+                margin: 0;
+            }
+        }
+    }
+    .c__openbtn {
+        width: 60px;
+        height: 60px;
+        &.active {
+            span {
+                &:nth-of-type(1) {
+                    left: 15px;
+                }
+                &:nth-of-type(2) {
+                    left: 15px;
+                }
+            }
+        }
+        span {
+            &:nth-child(1),
+            &:nth-child(2) {
+                width: 40%;
+            }
+        }
+    }
+    .c__content {
+        &-btn {
+            &--a {
+                font-size: v.$small;
+                padding: .5rem 1rem;
+                width: 200px;
+                height: 45px;
+            }
+        }
+        &-footer-bar {
+            &.hidden {
+                display: none;
+            }
+            &.visible {
+                display: block;
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        &-heading {
+            &--h3 {
+                &::before {
+                    margin: 0px auto 15px;
+                    width: 90px;
+                }
+                &-en,
+                &-en-w {
+                    font-size: v.$bigger;
+                }
+                &-en::before {
+                    width: 100px;
+                }
+                &-jp,
+                &-jp-w {
+                    font-size: v.$mini;
+                }
+            }
+        }
+    }
+    .c__footer {
+        &-3col {
+            &-item {
+                &-btn {
+                    height: 350px;
+                    &-item {
+                        &-txt {
+                            font-size: v.$small;
+                        }
+                    }
+                }
+            }
+        }
+        &-content {
+            padding: 60px 24px;
+            &-item {
+                flex-wrap: wrap;
+                flex-direction: column-reverse;
+                margin-bottom: 1rem;
+                &-logo {
+                    margin-bottom: .5rem;
+                    
+                }
+            }
+            &-menu {
+                &-list {
+                    padding: 1.5rem;
+                    &-item {
+                        width: 100%;
+                        padding: 20px;
+                    }
+                }
+            }
+        }
+        &-copyright {
+            padding: 1rem 0;
+            margin-bottom: 60px;
+        }
+        &-page-top {
+            bottom: 8.5%;
+            left: 2.5%;
+            &--btn {
+                --size: 60px;
+            }
+        }
+    }
+
+    .p__index {
+        &-mv {
+            &-detail {
+                &-ttl {
+                    font-size: v.$bigger;
+                }
+            }
+            &-scroll-btn {
+                bottom: 6%;
+                font-size: .6rem;
+                &::before,
+                &::after {
+                    height: 100px;
+                    bottom: -50px;
+                }
+            }
+        }
+        &-concept {
+            &--item {
+                &:nth-child(1) {
+                    margin-bottom: 40px;
+                }
+            }
+        }
+        &-service {
+            &-image {
+                &-txt {
+                    &-item {
+                        font-size: v.$regular;
+                        padding: 4px 8px;
+                    }
+                }
+            }
+            &-content {
+                padding-bottom: 80px;
+            }
+            &-group {
+                &-list {
+                    gap: 50px;
+                    &-item {
+                        &-pic {
+                            &-subttl {
+                                font-size: v.$mini;
+                            }
+                        }
+                        &-box {
+                            width: 90%;
+                            &-ttl {
+                                font-size: v.$medium;
+                                margin-bottom: .5rem;
+                                padding-bottom: .5rem;
+                                &::before {
+                                    font-size: v.$bigger;
+                                }
+                            }
+                            &-txt {
+                                font-size: v.$small;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-works {
+            &-slider {
+                margin: 80px 0 0;
+                .arrow_box {
+                    margin: 0;
+                    .slick-prev,
+                    .slick-next {
+                        width: 50px;
+                        height: 50px;
+                        &::before {
+                            width: 10px;
+                            height: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        &-recruit {
+            &--inner {
+                padding: 50px 25px;
+            }
+            &-detail {
+                &-txt {
+                    margin-bottom: 1rem;
+                    &-item {
+                        font-size: v.$regular;
+                        padding: 4px 8px;
+                    }
+                }
+            }
+        }
+        &-news {
+            &-box {
+                margin: 40px auto 0;
+                &-list {
+                    &-item {
+                        gap: 10px;
+                        padding: 1rem 1.25rem 1rem 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // page-〇〇.php
+    .p__page {
+        // page-service.php
+        &-service {
+            &-group {
+                &-list {
+                    &-item {
+                        &-box {
+                            &-ttl {
+                                font-size: v.$medium;
+                                &::before {
+                                    font-size: v.$lll;
+                                }
+                                &--en {
+                                    font-size: v.$mini;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // page-company.php
+        &-message {
+            &-box {
+                &-img {
+                    width: auto;
+                }
+                &-line {
+                    width: 100%;
+                }
+            }
+        }
+        &-company {
+            &-list {
+                padding: 1.5rem;
+                table {
+                    th,
+                    td {
+                        display: block;
+                        width: auto;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+        &-history {
+            &-list {
+                padding: 1.5rem;
+                table {
+                    th,
+                    td {
+                        display: block;
+                        width: auto;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+
+        // page-recruit.php
+        &-requirements {
+            &-list {
+                padding: 1.5rem;
+                tr {
+                    th,
+                    td {
+                        display: block;
+                        width: auto;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
