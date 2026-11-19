@@ -1,0 +1,803 @@
+@use "f-variables" as v;
+@use "f-mixins" as m;
+
+/* ▶ responsive */
+// pc-wide
+@include m.mq(pc-wide) {
+    // front-page
+    // contents5
+    .p-contents5__tab {
+        max-width: calc(100% - 15.625rem);
+        margin: 0 auto 7.8125rem;
+    }
+    .p-contents5__list.is-active {
+        flex-direction: column;
+    }
+    .p-contents5__details {
+        width: 100%;
+        padding: 0 8rem;
+    }
+    .p-contents5__img {
+        width: 80%;
+        height: 750px;
+    }
+
+    // contents-news
+    .p-contents-news .news__wrap,
+    .p-contents-news .news__btn-all {
+        max-width: calc(100% - 15.625rem);
+    }
+
+    // contents-gallery
+    .p-contents-gallery .gallery__list,
+    .p-contents-gallery .news__btn-all {
+        max-width: calc(100% - 15.625rem);
+    }
+    .p-contents-gallery .gallery__item {
+        flex: 0 0 calc(33% - 0.3125rem);
+    }
+    .p-contents-gallery .gallery__item:nth-child(n + 7) {
+        display: none;
+    }
+
+    // footer
+    .footer__container {
+        gap: 4.6875rem;
+    }
+
+    // sub-page
+    // restaurant-list
+    .restaurants__details {
+        gap: 5.625rem;
+    }
+    .restaurants__map {
+        iframe {
+            width: 37.1875rem;
+        }
+    }
+    .restaurants__menu-list {
+        width: calc(100% - 12.625rem);
+    }
+}
+
+// pc
+@include m.mq(pc) {
+    // common
+    // ttl
+    .p-ttl__img {
+        left: 22%;
+    }
+
+    // front-page
+    // contents0
+    .p-contents0 {
+        flex-direction: column;
+    }
+
+    // contents5
+    .p-contents5__tab {
+        max-width: calc(100% - 8rem);
+    }
+
+    // contents-news
+    .news__wrap {
+        max-width: calc(100% - 8rem);
+        flex-direction: column;
+    }
+    .news__category {
+        min-width: 23.4375rem;
+    }
+    .news__list {
+        width: 100%;
+    }
+    .p-contents-news .news__btn-all {
+        max-width: calc(100% - 8rem);
+    }
+
+    // contents-gallery
+    .p-contents-gallery .gallery__list, 
+    .p-contents-gallery .news__btn-all {
+        max-width: calc(100% - 8rem);
+    }
+    
+    // footer
+    .footer__container {
+        flex-direction: column;
+    }
+
+    // sub-page
+    // common
+    .page-header__img {
+        img {
+            height: 70vh;
+        }
+    }
+
+    // news
+    .archive-news .news__wrap,
+    .category-news .news__wrap {
+        max-width: 100%;
+    }
+
+    // gallery 
+    .gallery__item {
+        flex: 0 0 calc(33% - 0.3125rem);
+    }
+
+    // restaurant-list
+    .restaurants__details {
+        flex-direction: column-reverse;
+    }
+    .restaurants__txt {
+        width: 100%;
+    }
+    .restaurants__img--left {
+        margin-right: auto;
+    }
+    .restaurants__slideshow {
+        height: 42.8125rem;
+    }
+    .restaurants__summary-list {
+        flex-direction: column;
+    }
+    .restaurants__box {
+        width: 100%;
+    }
+    .restaurants__map {
+        margin-top: 0;
+        width: 100%;
+        iframe {
+            width: 100%;
+            height: 40rem;
+        }
+    }
+}
+
+// laptop
+@include m.mq(laptop) {
+    // common
+    .breadcrumb__container {
+        margin: 3.75rem 0 8.25rem;
+    }
+
+    // gnav
+    .gnav {
+        &__box {
+            height: 5.5rem;
+            padding: 0 1.5rem;
+        }
+        &__list {
+            display: none;
+        }
+        &__modal {
+            display: block;
+        }
+    }
+
+    // front-page
+    // contents-news
+    .news__item a {
+        @include m.cluster(1.5rem);
+        padding: 2.125rem 1.5625rem;
+        flex-direction: column;
+    }
+
+    // sub-page
+    // common
+    .page-header__img {
+        img {
+            height: 60vh;
+        }
+    }
+
+    // restaurant-list
+    .restaurants__branch-item a img {
+        height: 525px;
+    }
+
+    // news
+    .news__box--single {
+        padding-top: 4rem;
+        padding-left: 4rem;
+    }
+    .news__content {
+        margin: 0 0 8rem 0;
+    }
+    .news__pagination {
+        margin-top: 4.25rem;
+    }
+
+    // gallery
+    .gallery__box--single {
+        padding-bottom: 4rem;
+        padding-right: 4rem;
+    }
+    .gallery__article {
+        margin-bottom: 8rem;
+    }
+
+    // restaurant-list
+    .restaurants__branch-item {
+        flex: 0 1 calc((100% - 0.625rem) / 2);
+    }
+}
+
+// tab
+@include m.mq(tablet) {
+    // common
+    .l-breadcrumb {
+        width: calc(100% - 3rem);
+    }
+    .breadcrumb__container {
+        margin: 1.75rem 0 6.25rem;
+    }
+
+    .p-ttl__img {
+        left: 34%;
+    }
+
+    // layout
+    .l-main.restaurant-detail, 
+    .l-main.archive-news,
+    .l-main.category-news,
+    .l-main.single-news,
+    .l-main.archive-gallery,
+    .l-main.category-gallery,
+    .l-main.single-gallery,
+    .l-main.contact,
+    .l-main.privacy-policy {
+        margin: 0 auto 8.5rem;
+        width: calc(100% - 3rem);
+    }
+    .l-footer {
+        padding: 6.25rem 2.25rem 3.75rem;
+    }
+
+    // front-page
+    // main-visual
+    .p-main-visual__logo img {
+        max-width: 9.375rem;
+        max-height: 9.375rem;
+    }
+    .p-main-visual__txt {
+        right: 1.5rem;
+    }
+    .p-main-visual__scroll {
+        right: 1.5rem;
+    }
+
+    // contents0
+    .p-contents0__txt p:nth-child(1) {
+        width: 80%;
+        margin: 12.5rem 1.5rem 6.25rem auto;
+    }
+    .p-contents0__txt p:nth-child(2) {
+        width: 80%;
+        margin: 6.25rem auto 0 0;
+    }
+
+    // contents-gallery
+    .p-contents-gallery .gallery__item {
+        flex: 0 0 calc(50% - 0.3125rem);
+    }
+    .p-contents-gallery .gallery__item:nth-child(n + 5) {
+        display: none;
+    }
+    .p-contents-gallery .gallery__thumb img,
+    .gallery__thumb img {
+        height: 30.625rem;
+    }
+
+    // footer
+    .footer__list ul {
+        @include m.cluster(3.125rem);
+    }
+
+    // sub-page
+    .news__nav,
+    .gallery__nav {
+        flex-direction: column;
+    }
+    .news__nav-prev,
+    .news__nav-next,
+    .gallery__nav-prev,
+    .gallery__nav-next {
+        width: 100%;
+    }
+    .news__nav-prev a,
+    .news__nav-next a,
+    .gallery__nav-prev a,
+    .gallery__nav-next a {
+        padding: 1.5rem;
+    }
+
+    // gallery
+    .gallery__item {
+        flex: 0 0 calc(50% - 0.3125rem);
+    }
+    .gallery__thumb--single img {
+        width: 100%;
+    }
+
+    // restaurant-list
+    .restaurants__img--right {
+        img {
+            width: 100%;
+            height: 42.1875rem;
+            object-fit: cover;
+        }
+    }
+    .restaurants__menu-list,
+    .restaurants__btn {
+        width: calc(100% - 8rem);
+    }
+    .restaurants__concept,
+    .restaurants__menu,
+    .restaurants__summary {
+        margin-bottom: 9.375rem;
+    }
+    .restaurants__table table tr th,
+    .restaurants__table table tr td {
+        display: block;
+        width: auto;
+        padding: 1rem 0;
+    }
+    .restaurants__table table tr.restaurants__row--spacer th,
+    .restaurants__table table tr.restaurants__row--spacer td {
+        padding: 1rem 0px;
+    }
+    .restaurants__img {
+        img {
+            height: 50vh;
+        }
+    }
+    .restaurants__branch-item a img {
+        height: 35.3125rem;
+    }
+
+    // contact
+    .contact__txt p {
+        text-align: left;
+        margin: 0 auto 2.5rem;
+    }
+    .wpcf7 .wpcf7-radio input[type=radio], 
+    .wpcf7 .wpcf7-checkbox input[type=checkbox],
+    .wpcf7 .wpcf7-acceptance input[type=checkbox] {
+        scale: 1;
+        vertical-align: middle;
+        margin-bottom: .25rem;
+    }
+}
+
+// sp
+@include m.mq(sp) {
+    // common
+    // ttl
+    .p-ttl {
+        margin-bottom: 6rem;
+        img {
+            width: 4rem;
+            height: 4rem;
+        }
+        h2 {
+            font-size: v.$large-2;
+            &::before {
+                width: 7.25rem;
+                margin-right: 2rem;
+            }
+        }
+    }
+
+    // layout
+    .l-footer {
+        padding: 3.25rem 1.5rem;
+    }
+    .l-container .l-contents5 {
+        padding-bottom: 8rem;
+    }
+    .l-container .l-contents-news {
+        padding: 8rem 0;
+    }
+    .l-container .l-contents-gallery {
+        margin: 8rem 0;
+    }
+
+    // front-page
+    // gnav
+    .gnav__logo--picture {
+        img {
+            width: 75%;
+            object-fit: contain;
+        }
+    }
+    .gnav__modal__menu {
+        width: min(43.4375rem, 100%);
+    }
+    .gnav__modal__content {
+        padding: 4.25rem 2.25rem 3.75rem;
+    }
+    .gnav__modal__list a {
+        padding: .75rem;
+    }
+
+    // footer
+    .footer__list ul {
+        flex-direction: column;
+    }
+    .footer__menu-col ul {
+        gap: 1rem;
+    }
+
+    // main-visual
+    .p-main-visual__movie--pc {
+        display: none;
+    }
+    .p-main-visual__movie--sp {
+        display: block;
+    }
+    .p-main-visual__txt p,
+    .p-main-visual__scroll p {
+        font-size: v.$small-2;
+    }
+    .p-main-visual__lang {
+        left: 1.25rem;
+        bottom: 2%;
+    }
+
+    // contents0
+    .p-contents0 {
+        padding: 15vh 0 20vh;
+        align-items: center;
+        gap: 4rem;
+    }
+    .p-contents0__img {
+        width: 85%;
+    }
+    .p-contents0__profile {
+        padding: 0 3rem;
+    }
+    .p-contents0__profile p {
+        margin: 3.125rem 0;
+    }
+    .p-contents0__awards {
+        margin: 0 3rem;
+    }
+    .p-contents0__txt p:nth-child(1) {
+        width: 80%;
+    }
+    .p-contents0__txt p:nth-child(2) {
+        width: 90%;
+        padding: 3.125rem 0 0 3rem;
+    }
+
+    // contents1-4
+    .p-contents1-4__box {
+        min-height: 46.6875rem;
+        background-image: var(--bg-sp);
+    }
+    .p-contents1-4__txt {
+        .is-pc-only {
+            display: none;
+        }
+        .is-sp-only {
+            display: block;
+        }
+    }
+    .p-contents1-4__box--1 .p-contents1-4__txt {
+        right: 5%;
+        bottom: 10%;
+    }
+    .p-contents1-4__box--2 .p-contents1-4__txt {
+        left: 5%;
+        top: 45%;
+    }
+    .p-contents1-4__box--3 .p-contents1-4__txt {
+        top: 25%;
+    }
+    .p-contents1-4__box--4 .p-contents1-4__txt {
+        top: 25%;
+    }
+
+    // contents5
+    .p-contents5__tab {
+        max-width: calc(100% - 3rem);
+        margin: 0 auto 2.8125rem;
+    }
+    .p-contents5__tab ul li a {
+        padding: .5rem .75rem;
+    }
+    .p-contents__shop {
+        padding-bottom: 2.5rem;
+        margin-bottom: 3.75rem;
+    }
+    .p-contents5__list {
+        gap: 6.25rem;
+    }
+    .p-contents5__details {
+        padding: 0 3rem;
+    }
+    .p-contents5__img {
+        width: 100%;
+        height: 575px;
+    }
+
+    // contents-news
+    .news__category {
+        min-width: 17.1875rem;
+        padding: 1.5rem;
+    }
+    .p-contents-news .news__wrap {
+        max-width: calc(100% - 3rem);
+        margin: 0 auto 3.125rem;
+    }
+    .p-contents-news .all-btn,
+    .p-contents-gallery .all-btn {
+        max-width: 100%;
+    }
+
+    // contents-gallery
+    .p-contents-gallery .gallery__list {
+        max-width: calc(100% - 3rem);
+    }
+    .p-contents-gallery .gallery__item {
+        flex: 0 0 calc(100% - 0.3125rem);
+        margin-bottom: 3.25rem;
+    }
+
+    // sub-page
+    // common
+    .page-header__ttl {
+        margin-top: 0;
+        h2 {
+            font-size: v.$large-3;
+            line-height: 1.2;
+            &::after {
+                background-image: url(../img/logo/logo-img3.png);
+                width: 6.25rem;
+                height: 6.25rem;
+            }
+        }
+    }
+    .page-header__img {
+        img {
+            height: 50vh;
+        }
+    }
+
+    // news
+    .news__box--single {
+        padding-top: 2.5rem;
+        padding-left: 2.5rem;
+    }
+    .news__content {
+        margin: 0 0 6rem 0;
+    }
+
+    // gallery
+    .gallery__item {
+        flex: 0 0 calc(100% - 0.3125rem);
+        margin-bottom: 3.25rem;
+    }
+    .gallery__box--single {
+        padding-bottom: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    .gallery__article {
+        margin-bottom: 6rem;
+    }
+
+    // restaurant-list
+    .restaurants__menu-list,
+    .restaurants__btn {
+        width: 100%;
+    }
+    .restaurants__notes span {
+        margin-bottom: 3.125rem;
+        padding: 0;
+    }
+    .restaurants__map {
+        iframe {
+            height: 30rem;
+        }
+    }
+    .restaurants__branch-item a img {
+        height: 26.5625rem;
+    }
+    .restaurants__box {
+        padding: 1.5rem;
+    }
+    .restaurants__info ul li {
+        flex-direction: column;
+    }
+    .restaurants__info ul li span {
+        margin-right: 0;
+        margin-bottom: .5rem;
+    }
+    .restaurants__info ul li p {
+        width: 100%;
+    }
+    .restaurants__branch-item a p {
+        font-size: v.$small-1;
+    }
+
+    // contact
+    .wpcf7 .wpcf7-submit {
+        width: min(90%, 14.0625rem);
+        height: 3.75rem;
+    }
+}
+
+// sp-narrow
+@include m.mq(sp-narrow) {
+    // common
+    .p-ttl__img {
+        top: -5%;
+        left: 16%;
+    }
+    .p-ttl {
+        margin-bottom: 3rem;
+        left: -7%;
+    }
+    .p-ttl h2::before {
+        width: 4.25rem;
+        margin-right: 1.5rem;
+    }
+
+    // layout
+    .l-container .l-contents-news {
+        padding: 5rem 0;
+    }
+
+    // front-page
+    // gnav
+    .gnav__box {
+        height: 4rem;
+        padding: 0 .5rem;
+    }
+    .gnav__logo--picture img {
+        width: 70%;
+    }
+    .gnav__modal {
+        right: 1.1rem;
+        top: .9rem;
+    }
+
+    // footer
+    .footer__container {
+        gap: 2rem;
+    }
+    .footer__logo a img {
+        width: 80%;
+    }
+    .footer__btn-r {
+        margin-bottom: 2.125rem;
+    }
+    .footer__list ul {
+        padding-bottom: 3.125rem;
+    }
+    .footer__copyright p {
+        font-size: v.$small-2;
+    }
+
+    // main-visual
+    .p-main-visual__logo img {
+        width: 7.5rem;
+        height: 7.5rem;
+    }
+    .p-main-visual__lang {
+        left: 1.25rem;
+        bottom: 2%;
+    }
+
+    // contents0
+    .p-contents0__txt {
+        max-width: 25rem;
+        box-sizing: border-box;
+    }
+    .p-contents0__profile {
+        padding: 0 1.5rem;
+    }
+    .p-contents0__awards {
+        margin: 0 1.5rem;
+    }
+
+    // contents1-4
+    .p-contents1-4 {
+        margin-bottom: 5.5rem;
+    }
+    .p-contents1-4__num {
+        top: 3.25rem;
+        right: 3.25rem;
+    }
+    .p-contents1-4__txt {
+        width: 80vw;
+    }
+    .p-contents1-4__box--1 .p-contents1-4__txt {
+        right: 5%;
+        bottom: 15%;
+    }
+    .p-contents1-4__box--2 .p-contents1-4__txt {
+        left: 5%;
+        top: 35%;
+    }
+    .p-contents1-4__box--3 .p-contents1-4__txt {
+        top: 25%;
+    }
+    .p-contents1-4__box--4 .p-contents1-4__txt {
+        left: 10%;
+        top: 20%;
+    }
+    .p-contents1-4__txt h3 {
+        font-size: v.$medium-2;
+    }
+
+    // restaurant-list
+    .p-contents5__details {
+        padding: 0 1.5rem;
+    }
+    .p-contents5__shop {
+        padding-bottom: 1.125rem;
+        margin-bottom: 3rem;
+    }
+    .p-contents5__shop h4 span {
+        margin-left: 1.5rem;
+    }
+
+    // gallery
+    .p-contents-gallery .gallery__thumb img,
+    .gallery__thumb img {
+        height: 25.625rem;
+    }
+
+    // sub-page
+    .restaurants__details {
+        gap: 3.625rem;
+        margin-bottom: 6.375rem;
+    }
+    .restaurants__img--right img {
+        height: 30.1875rem;
+    }
+    .restaurants__img--left img {
+        width: 12.5rem;
+        height: 12.5rem;
+    }
+    .restaurants__txt h3 {
+        font-size: v.$large-2;
+    }
+    .restaurants__slideshow {
+        height: 24.8125rem;
+    }
+    .restaurants__slideshow .rs-arrow {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+    .restaurants__table table tr th,
+    .restaurants__table table tr td {
+        padding: 1rem 0 0;
+    }
+    .restaurants__menu-list::before {
+        width: calc(70% + 3.125rem);
+        height: 100vh;
+    }
+    .restaurants__btn {
+        flex-direction: column;
+    }
+    .restaurants__btn div {
+        width: 100%;
+    }
+    .restaurants__branch-item a img {
+        height: 18.5625rem;
+    }
+
+    // news
+    .news__box--single {
+        padding-top: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    // gallery
+    .gallery__box--single {
+        padding-bottom: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

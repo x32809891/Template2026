@@ -1,0 +1,111 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// フッター
+.footer {
+    &__container {
+        @include m.flex(row, wrap, space-between, flex-start);
+        @include m.cluster(9.375rem);
+    }
+    &__logo {
+        flex: .2;
+        a {
+            display: inline-block;
+        }
+    }
+    &__list {
+        flex: 2;
+        border-bottom: 1px solid v.$black-gray;
+        ul {
+            @include m.flex(row, wrap, space-between, stretch);
+            @include m.cluster(6.25rem);
+            padding-bottom: 6.25rem;
+            li {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                h3 {
+                    font-size: v.$large-1;
+                    margin-top: 0;
+                    text-transform: capitalize;
+                }
+                p {
+                    margin: 0 0 1.25rem 0;
+                    a {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+    &__btn-r {
+        margin-bottom: 3.125rem;
+        a {
+            background-color: v.$theme-color6;
+            border-radius: 2rem;
+            color: v.$text-white;
+            width: 9.375rem;
+            height: 2.1875rem;
+            text-align: center;
+            text-transform: capitalize;
+            line-height: 2.1875rem;
+            transition: .4s all;
+            &:hover {
+                background-color: v.$theme-color7;
+                color: v.$text-black;
+                transition: .4s all;    
+            }
+        }
+    }
+    &__btn-g {
+        margin-top: auto;
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: .8em;
+            text-transform: capitalize;
+            transition: .4s ease-in;
+            &:hover {
+                opacity: .8;
+                transition: .4s ease-in;
+            }
+            &::before {
+                content: "\e0c8";
+                font-family: 'Material Symbols Outlined';
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+                font-size: 1.2em;
+                line-height: 1;
+            }
+        }
+    }
+    &__menu-col {
+        ul {
+            @include m.flex(row, wrap, flex-end, flex-start);
+            @include m.cluster(1.875rem);
+            margin-top: 1.875rem;
+            transition: .4s ease-in;
+            li {
+                a {
+                    color: v.$text-black;
+                    transition: .4s ease-in;
+                    &:hover {
+                        opacity: .5;
+                        transition: .4s ease-in;
+                    }
+                }
+            }
+        }
+    }
+    &__copyright {
+        margin: 3.125rem 0 0 0;
+        p {
+            color: v.$black-gray;
+            margin: 0;
+            text-align: right;
+        }
+    }
+}

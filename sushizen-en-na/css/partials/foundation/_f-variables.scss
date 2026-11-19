@@ -1,0 +1,161 @@
+// =======================================================================
+//    Color Variables
+// =======================================================================
+// テーマカラーに関連する変数です。
+// v.$〇〇でカラーを呼び出して使用してください。
+
+$text-black: #333333;      // 文字色（黒）
+$text-white: #ffffff;      // 文字色（白）
+$white-gray: #F6F6F6;      // 白っぽいグレー
+$black-gray: #CFCFCF;      // 黒っぽいグレー
+
+$Wt: #ffffff;              // 白色
+$plGy: #efefef;            // 薄いグレー
+$ltGy: #d4d4d4;            // 更に薄いグレー
+$mdGy: #9f9f9f;            // 中間グレー
+$dkGy: #555555;            // ダークグレー
+$Bk: #000000;              // 黒色
+
+$white: #ffffff;           // 白
+$silver: #cccccc;          // 銀色
+$black: #000000;           // 黒
+$red: #FF0000;             // 赤
+$orange: #ff3300;          // オレンジ
+$gamboge: #ff9900;         // ガンボージ（黄色）
+$yellow: #ffff00;          // 黄色
+$harlequin: #33ff00;       // ハーレクイン（鮮やかな緑）
+$green: #339900;           // 緑
+$blue: #0066ff;            // 青
+$water: #66ccff;           // 水色
+$orchid: #cc00ff;          // オーキッド（紫）
+$pink: #ff3399;            // ピンク
+
+// テーマカラー
+$theme-color1: #BDE1D6;    // ロゴのグリーン
+$theme-color2: #5E706B;    // dark-greeen
+$theme-color3: #DEF0EA;    // mid-green
+$theme-color4: #E7EEEB;    // light-green
+$theme-color5: #F1F9F6;    // bg-green
+$theme-color6: #928572;    // アクセントカラー
+$theme-color7: #ECEBE8;    // mid-baige
+$theme-color8: #F5F4F3;    // bg-beige
+$theme-color9: #DEDCD9;    // bg-dark-bage
+
+
+// =======================================================================
+//   Font Variables
+// =======================================================================
+// フォント関連の変数です。
+// $〇〇でフォントを呼び出して使用してください。
+
+$default: "Helvetica Neue LT", "Helvetica Neue", Helvetica, "Hiragino Sans", "Yu Gothic", 游ゴシック体, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", メイリオ, Meiryo, sans-serif !default; // デフォルトフォント
+$number: "Times New Roman" !default; // 数字フォント
+$en: -apple-system, BlinkMacSystemFont !default; // 英語用フォント
+$mincho: "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif !default; // 明朝体フォント
+
+$web-fonts-ja: "Noto Sans JP", sans-serif !default; // 日本語用フォント（サンセリフ）
+$web-fonts-ja-mincho: "Noto Serif JP", serif !default; // 日本語用フォント（明朝体）
+
+$web-fonts-en: "Lato", sans-serif !default; // 英語用フォント（サンセリフ）
+
+
+// =======================================================================
+//   Responsive Typography (Viewport Units)
+// =======================================================================
+// ビューポート単位に基づくフォントサイズの変数です。
+// レスポンシブなデザインに使用します。
+
+$large-6: clamp(3.75rem, 3.486rem + 1.13vw, 4.5rem) !default;   // 60px 〜 72px
+$large-5: clamp(3.125rem, 2.817rem + 1.31vw, 4rem) !default;    // 50px 〜 64px
+$large-4: clamp(2.625rem, 2.361rem + 1.13vw, 3.375rem) !default; // 42px 〜 54px
+$large-3: clamp(2.125rem, 1.905rem + 0.94vw, 2.75rem) !default;  // 34px 〜 44px
+$large-2: clamp(1.75rem, 1.574rem + 0.75vw, 2.25rem) !default;   // 28px 〜 36px
+$large-1: clamp(1.5rem, 1.368rem + 0.56vw, 1.875rem) !default;   // 24px 〜 30px
+
+$medium-3: clamp(1.375rem, 1.331rem + 0.19vw, 1.5rem) !default;  // 22px 〜 24px
+$medium-2: clamp(1.25rem, 1.206rem + 0.19vw, 1.375rem) !default; // 20px 〜 22px
+$medium-1: clamp(1.125rem, 1.081rem + 0.19vw, 1.25rem) !default; // 18px 〜 20px
+
+$regular: clamp(1rem, 0.956rem + 0.19vw, 1.125rem) !default; 
+
+$small-1: clamp(0.9375rem, 0.916rem + 0.09vw, 1rem) !default;     // 15px 〜 16px
+$small-2: clamp(0.875rem, 0.853rem + 0.09vw, 0.9375rem) !default; // 14px 〜 15px
+$small-3: clamp(0.75rem, 0.706rem + 0.19vw, 0.875rem) !default;   // 12px 〜 14px
+
+
+// =======================================================================
+//   Box Shadow Variables
+// =======================================================================
+// ボックスシャドウに関する変数です。
+// 要素に影を追加する際に使用します。
+
+$box-shadow: 0 3px 15px rgba(90, 74, 55, 0.1) !default; // 基本のボックスシャドウ
+$box-shadow-hover: 1rem 1rem 1.5rem rgba(0, 0, 0, .08), -1rem -1rem 1.5rem var(--color-bg) !default; // ホバー時のボックスシャドウ
+$box-shadow-inset: inset .8rem .8rem 1.2rem rgba(0, 0, 0, .05), inset -.8rem -.8rem 1.2rem var(--color-bg) !default; // インセットボックスシャドウ
+$box-shadow-light: .8rem .8rem 1.2rem rgba(0, 0, 0, .05), -.8rem -.8rem 1.2rem #fff !default;
+$box-shadow-dark: .8rem .8rem 1.2rem rgba(0, 0, 0, .1), -.8rem -.8rem 1.2rem rgba(#fff,.2) !default; // ダークテーマ用ボックスシャドウ
+
+
+// =======================================================================
+//   Path Variables
+// =======================================================================
+// 画像やリソースのパスを設定する変数です。
+
+$path: "../img/" !default; // 画像ファイルのパス
+
+
+// =======================================================================
+//   Spacing and Layout Variables
+// =======================================================================
+// スペースやレイアウトに関連する変数です。
+// サイズに応じてレイアウトを調整する際に使用します。
+
+$h-height: 60px !default; // ヘッダーの高さ
+
+$tight: min(8%, 1rem) !default; // タイトなスペーシング
+$loose: max(3%, 2rem) !default; // ルーズなスペーシング
+$open: max(5%, 3rem) !default; // 広めのスペーシング
+
+$layout-side-gap: 97px;
+
+$overlap-lg: 120px;
+$overlap-sm: 80px;
+
+
+// =======================================================================
+//   Z-index Variables
+// =======================================================================
+// z-indexの値を設定する変数です。
+// 要素の重なり順序を調整する際に使用します。
+
+$z10000: 10000;
+$z100: 100;
+$z50: 50;
+$z10: 10;
+$z1: 1;
+$z-1: -1;
+$z-10: -10;
+
+
+// =======================================================================
+//   Animation Variables
+// =======================================================================
+// アニメーションの時間に関連する変数です。
+
+$fast: .15s !default; // 素早いアニメーション
+$slow: .4s !default;  // ゆっくりなアニメーション
+
+
+// =======================================================================
+//   Break Points
+// =======================================================================
+// レスポンシブのブレイクポイントの変数です。
+
+$breakpoints: (
+    sp-narrow: 390px,
+    sp: 560px,
+    tablet: 780px,
+    laptop: 1024px,
+    pc: 1280px,
+    pc-wide: 1440px,
+);

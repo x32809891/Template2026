@@ -1,0 +1,102 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// 特定のプロジェクト固有のスタイルや要素を定義する
+// contact
+.contact {
+    &__box {
+        max-width: 80rem;
+        margin: 0 auto;
+        width: 100%;
+    }
+    &__txt {
+        p {
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+    }
+    &__form {
+        width: 100%;
+        height: 100%;
+    }
+    &__row {
+        margin-bottom: 2.5rem;
+        p {
+            span.sign {
+                color: v.$red;
+            }
+        }
+    }
+    &__label {
+        margin-bottom: 1rem;
+        p {
+            text-transform: capitalize;
+            position: relative;
+            border-bottom: 1px solid v.$ltGy;
+            font-weight: 600;
+            padding-bottom: .5rem;
+            position: relative;
+            &::before {
+                content: "";
+                width: .625rem;
+                height: .625rem;
+                background: linear-gradient(135deg, #1a3a2a, #4a8a6a);
+                border-radius: 2px;
+                display: inline-block;
+                margin-bottom: .05rem;
+                margin-right: 1.25rem;
+                opacity: .9;
+                transform: rotate(45deg);
+            }
+        }
+    }
+    &__policy {
+        a {
+            text-align: center;
+            text-decoration: underline;
+        }
+    }
+}
+
+// privacy policy
+.policy {
+    &__box {
+        margin-bottom: 3rem;
+        > h3 {
+            color: v.$dkGy;
+            font-size: v.$large-1;
+            border-bottom: 1px solid v.$ltGy;
+            padding-bottom: .5rem;
+        }
+    }
+}
+
+// 404
+.page-404 {
+    .all-btn {
+        margin-top: 3rem;
+        a {
+            @include m.flex(row, nowrap, flex-end, center);
+            @include m.cluster(5rem);
+            &:hover {
+                transition: .4s ease-in;
+                .p-btn__circle {
+                    background-color: v.$theme-color1;
+                    transform: scale(1.15);
+                    transition: .4s ease-in;
+                    &::before {
+                        transform: translateX(5px);
+                        transition: .4s ease-in;
+                    }
+                    span {
+                        &:nth-child(1) {
+                            background-color: v.$white;
+                            transform: scale(1.6);
+                            transition: .4s ease-in;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

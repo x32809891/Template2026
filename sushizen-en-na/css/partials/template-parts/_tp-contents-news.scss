@@ -1,0 +1,53 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// contents-news
+.p-contents-news {
+    .news__wrap {
+        max-width: calc(100% - 375px);
+        margin: 0 auto 100px;
+    }
+    .news__item {
+        transition: opacity .3s ease;
+        &.is-hiding {
+            opacity: 0;
+            pointer-events: none;
+        }
+        &[hidden] {
+            display: none !important;
+        }
+        &.is-last-visible {
+            border-bottom: 1px solid v.$mdGy;
+        }
+    }
+    .all-btn {
+        max-width: calc(100% - 375px);
+        margin: 0 auto;
+        text-align: right;
+        padding: 0 1.5625rem;
+        a {
+            @include m.flex(row, nowrap, flex-end, center);
+            @include m.cluster(80px);
+            text-transform: capitalize;
+            &:hover {
+                transition: .4s ease-in;
+                .p-btn__circle {
+                    background-color: v.$theme-color1;
+                    transform: scale(1.15);
+                    transition: .4s ease-in;
+                    &::before {
+                        transform: translateX(5px);
+                        transition: .4s ease-in;
+                    }
+                    span {
+                        &:nth-child(1) {
+                            background-color: v.$white;
+                            transform: scale(1.6);
+                            transition: .4s ease-in;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

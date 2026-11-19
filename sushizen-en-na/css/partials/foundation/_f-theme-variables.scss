@@ -1,0 +1,72 @@
+// variables.scssを崩さずに変数の値を上書きするためのファイルです。
+// 使用する場合は、下記の変数の値を自由に変更してください。
+// colorとz-indexの変数の値は、variables.scssのものから変更出来ないようにしています。
+
+@use "f-variables" as v with (
+    
+    // =======================================================================
+    //   Font Variables
+    // =======================================================================
+
+    $default: ("Helvetica Neue LT", "Helvetica Neue", Helvetica, "Hiragino Sans", "Yu Gothic", 游ゴシック体, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", メイリオ, Meiryo, sans-serif),
+    $number: ("Times New Roman"),
+    $en: (-apple-system, BlinkMacSystemFont),
+    $mincho: ("Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif),
+
+    $web-fonts-ja: ("Noto Sans JP", sans-serif),
+    $web-fonts-ja-mincho: ("Noto Serif JP", serif),
+    $web-fonts-en: ("Lato", sans-serif),
+
+
+    // =======================================================================
+    //   Responsive Typography (Viewport Units)
+    // =======================================================================
+
+    $large-6: clamp(5.1rem, 4.955rem + 0.73vw, 5.5rem),
+    $large-5: clamp(4.1rem, 3.773rem + 1.64vw, 5rem),
+    $large-4: clamp(3.1rem, 2.773rem + 1.64vw, 4rem),
+    $large-3: clamp(2.3rem, 2.045rem + 1.27vw, 3rem),
+    $large-2: clamp(1.7rem, 1.518rem + 0.91vw, 2.2rem),
+    $large-1: clamp(1.1rem, 0.918rem + 0.91vw, 1.6rem),
+    $regular: clamp(0.9rem, 0.864rem + 0.18vw, 1rem),
+    $small-1: clamp(0.8rem, 0.764rem + 0.18vw, 0.9rem),
+    $small-2: clamp(0.7rem, 0.664rem + 0.18vw, 0.8rem),
+    $small-3: clamp(0.6rem, 0.564rem + 0.18vw, 0.7rem),
+
+
+    // =======================================================================
+    //   Box Shadow Variables
+    // =======================================================================
+
+    $box-shadow: (0 3px 15px rgba(90, 74, 55, 0.1)),
+    $box-shadow-hover: (1rem 1rem 1.5rem rgba(0, 0, 0, .08), -1rem -1rem 1.5rem var(--color-bg)),
+    $box-shadow-inset: (inset .8rem .8rem 1.2rem rgba(0, 0, 0, .05), inset -.8rem -.8rem 1.2rem var(--color-bg)),
+    $box-shadow-light: (.8rem .8rem 1.2rem rgba(0, 0, 0, .05), -.8rem -.8rem 1.2rem #fff),
+    $box-shadow-dark: (.8rem .8rem 1.2rem rgba(0, 0, 0, .1), -.8rem -.8rem 1.2rem rgba(#fff,.2)),
+
+
+    // =======================================================================
+    //   Path Variables
+    // =======================================================================
+
+    $path: "../img/", // 画像ファイルのパス
+
+
+    // =======================================================================
+    //   Spacing and Layout Variables
+    // =======================================================================
+
+    $h-height: 60px, // ヘッダーの高さ
+
+    $tight: min(8%, 1rem), // タイトなスペーシング
+    $loose: max(3%, 2rem), // ルーズなスペーシング
+    $open: max(5%, 3rem), // 広めのスペーシング
+
+
+    // =======================================================================
+    //   Animation Variables
+    // =======================================================================
+
+    $fast: .15s, // 素早いアニメーション
+    $slow: .4s,  // ゆっくりなアニメーション
+);

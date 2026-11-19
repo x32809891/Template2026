@@ -1,0 +1,89 @@
+@use "f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+/* ▶ base style */
+body {
+    background-color: v.$white;
+    color: v.$text-black;
+    // color-scheme: light dark;
+    counter-reset: cntr;
+    font-family: v.$en;
+    font-feature-settings: "palt" 1;
+    font-weight: 500;
+    letter-spacing: .1rem;
+    line-break: strict;
+    line-height: 2;
+    min-height: 100svh;
+    overflow-y: scroll;
+    overflow-x: clip;
+    scrollbar-gutter: stable both-edges;
+    text-rendering: optimizeLegibility;
+    &.is-menu-open {
+        overflow: hidden;
+    }
+}
+
+body.is-scrolled {
+    .gnav__menu > ul > li:last-child {
+        border: 1px solid v.$black;
+    }
+    .gnav__container--inner {
+        background-color: v.$white;
+        box-shadow: 0 2px 8px rgba(v.$black, .08);
+    }
+    .gnav__logo--picture {
+        &.is-black { opacity: 1; }
+        &.is-white { opacity: 0; }
+    }
+    .gnav__modal__toggle span {
+        background: v.$black;
+    }
+    .gnav__menu > ul > li a {
+        color: v.$black;
+    }
+    .gnav__menu .sub-menu li a {
+        border-color: v.$black;
+    }
+}
+
+body.is-hidden:not(.is-menu-open) {
+    .l-gnav {
+        transform: translateY(-100%);
+        transition: transform .4s ease;
+    }
+    .gnav__modal__toggle {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .4s ease, opacity .4s ease;
+    }
+}
+
+body.is-menu-open {
+    .gnav__modal__toggle span {
+        background: v.$white !important;
+    }
+    .gnav__logo--picture {
+        &.is-white { opacity: 1 !important; }
+        &.is-black { opacity: 0 !important; }
+    }
+    .gnav__container--inner {
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+    .gnav__menu > ul > li a {
+        color: v.$white !important;
+    }
+}
+
+a {
+    color: v.$text-black;
+    display: block;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

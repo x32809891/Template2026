@@ -1,0 +1,84 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// contents1-4 / history
+.p-contents1-4 {
+	position: relative;
+	margin-bottom: 12.5rem;
+	&__box {
+		position: sticky;
+		top: 0;
+		height: 100svh;
+		overflow: hidden;
+		background-image: var(--bg-pc);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: rgba(v.$black, .1);
+			z-index: 1;
+		}
+		> * {
+			position: relative;
+			z-index: 2;
+		}
+	}
+	&__box--1 {
+		z-index: 1;
+		.p-contents1-4__txt {
+			right: 10%;
+			bottom: 12%;
+		}
+	}
+	&__box--2 {
+		z-index: 2;
+		.p-contents1-4__txt {
+			left: 10%;
+			top: 25%;
+		}
+	}
+	&__box--3 {
+		z-index: 3;
+		.p-contents1-4__txt {
+			left: 50%;
+			top: 35%;
+			transform: translateX(-50%);
+		}
+	}
+	&__box--4 {
+		z-index: 4;
+		.p-contents1-4__txt {
+			left: 15%;
+			top: 25%;
+		}
+	}
+	&__num {
+		position: absolute;
+		top: 6.25rem;
+		right: 6.25rem;
+		span {
+			font-size: v.$medium-3;
+			letter-spacing: 0.12em;
+			color: rgba(v.$white, .45);
+			z-index: 10;
+		}
+	}
+	&__txt {
+		position: absolute;
+		width: min(50vw, 35.9375rem);
+		h3,
+		p {
+			color: v.$text-white;
+		}
+		h3 {
+			font-size: v.$medium-3;
+			margin: 0 0 2.5rem 0;
+		}
+		.is-sp-only {
+			display: none;
+		}
+	}
+}

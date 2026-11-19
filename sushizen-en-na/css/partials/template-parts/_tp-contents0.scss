@@ -1,0 +1,50 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// contents0 / profile
+.p-contents0 {
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+    padding: 20vh 15vh 30vh;
+    @include m.flex(row, wrap, space-between, flex-end);
+    @include m.cluster(8rem);
+    &__img,
+    &__main {
+        flex: 1;
+        width: 100%;
+    }
+    &__img {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    &__profile {
+        margin: 0 auto;
+        h3 {
+            font-size: v.$large-1;
+            margin: 0;
+            text-align: left;
+        }
+        p {
+            margin: 4.375rem 0;
+        }
+    }
+    &__awards {
+        background-color: v.$theme-color9;
+        padding: 2.5rem;
+        margin: 0 auto;
+        p {
+            margin-top: 0;
+        }
+    }
+}

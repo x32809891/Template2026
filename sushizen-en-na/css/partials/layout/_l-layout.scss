@@ -1,0 +1,127 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// ページのレイアウトを形成する要素を定義する
+// グリッドシステム、コンテナなど
+.l-container {
+    .l-main-visual {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .l-contents0 {
+        background-color: v.$white;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        @include m.overlap-up(v.$overlap-lg);
+    }
+    .l-contents5 {
+        position: relative;
+        z-index: 2;
+        background-color: v.$white;
+        padding-bottom: 15rem;
+    }
+    .l-contents-news {
+        position: relative;
+        z-index: 3;
+        background-color: v.$theme-color5;
+        padding: 12.5rem 0;
+    }
+    .l-contents-gallery {
+        margin: 12.5rem 0;
+    }
+}
+
+.l-gnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform .4s ease;
+    &.is-hidden {
+        transform: translateY(-100%);
+    }
+    &.is-scrolled {
+        .gnav__container--inner {
+            background-color: v.$white;
+        }
+        .gnav__logo--picture.is-white {
+            opacity: 0;
+        }
+        .gnav__logo--picture.is-black {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .gnav__menu > ul > li:last-child {
+            border: 1px solid v.$text-black;
+        }
+        .gnav__menu > ul > li > a {
+            color: v.$black;
+        }
+        .gnav__menu .sub-menu {
+            background: v.$white;
+            li a {
+                color: v.$text-black;
+                border-top-color: v.$text-black;
+                border-left-color: v.$text-black;
+                border-right-color: v.$text-black;
+
+                &:hover {
+                    background: rgba(v.$text-black, .06);
+                }
+            }
+            li:last-child a {
+                border-bottom-color: v.$text-black;
+            }
+        }
+        .gnav__modal__toggle span {
+            background: v.$text-black;
+        }
+    }
+}
+
+.l-footer {
+    background-color: v.$theme-color8;
+    padding: 6.25rem 6.25rem 3.75rem 6.25rem;
+}
+
+.l-page-header {
+    position: relative;
+    z-index: 1;
+}
+
+.l-page-body {
+    background-color: v.$white;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    @include m.overlap-up(v.$overlap-sm);
+    padding-top: 2.5rem;
+}
+
+.l-breadcrumb {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - #{v.$layout-side-gap});
+    margin: 0 auto;
+}
+
+.l-main {
+    position: relative;
+    &.restaurant-detail,
+    &.archive-news,
+    &.category-news,
+    &.single-news,
+    &.archive-gallery,
+    &.category-gallery,
+    &.single-gallery,
+    &.contact,
+    &.privacy-policy,
+    &.page-404 {
+        width: calc(100% - #{v.$layout-side-gap});
+        margin: 0 auto 12.5rem;
+    }
+}

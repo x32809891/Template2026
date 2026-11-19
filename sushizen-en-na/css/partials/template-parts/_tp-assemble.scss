@@ -1,0 +1,26 @@
+// 使用するtemplate-partsのscssファイルを、このファイルと同じディレクトリに格納してください
+// そのファイルを指定して、下記のように@useルールで名前空間を定義してください
+// ファイル名を指定する際にpartialファイルを示す「_」と拡張子は必要ありません
+
+// loading / gnav
+@use "tp-gnav" as ga;
+
+// front-page
+@use "tp-main-visual" as mv;       // mv
+@use "tp-contents0" as c0;         // profile
+@use "tp-contents1-4" as c1;       // concept
+@use "tp-contents5" as c5;         // restaurant-list
+@use "tp-contents-news" as cn;     // news
+@use "tp-contents-gallery" as cg;  // gallery
+
+// restaurant list
+@use "tp-restaurant-detail" as rd;
+
+// news
+@use "tp-news-archive-body" as nb;
+
+// gallery
+@use "tp-gallery-archive-body" as gb;
+
+// footer
+@use "tp-footer" as ft;

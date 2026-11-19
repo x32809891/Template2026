@@ -1,0 +1,129 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// gallery
+.gallery {
+    &__box {
+        &--single {
+            border-right: 1px solid v.$mdGy;
+            border-bottom: 1px solid v.$mdGy;
+            padding-right: 8rem;
+            padding-bottom: 8rem;
+        }
+    }
+    &__article {
+        margin-bottom: 10rem;
+    }
+    &__list {
+        @include m.flex(row, wrap, flex-start, flex-start);
+        @include m.cluster(.3125rem);
+    }
+    &__item {
+        flex: 0 0 calc(25% - .3125rem);
+        margin-bottom: 6.25rem;
+    }
+    &__link {
+        overflow: hidden;
+        &:hover {
+            .gallery__thumb {
+                img {
+                    transform: scale(1.02);
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &__thumb {
+        position: relative;
+        overflow: hidden;
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(v.$black, .2);
+            opacity: 0;
+            transition: opacity .4s ease-in;
+        }
+        img {
+            width: 100%;
+            height: 40.625rem;
+            object-fit: cover;
+            transition: transform .4s ease-in;
+        }
+        &--single {
+            img {
+                width: 80%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    &__ttl {
+        width: calc(100% - 2.5rem);
+        margin: 0 auto;
+        h3 {
+            font-size: v.$large-1;
+            font-weight: 500;
+            margin: 1.5rem 0 .5rem 0;
+        }
+        &--single {
+            h3 {
+                font-size: v.$large-1;
+                margin-bottom: .5rem;
+            }
+        }
+    }
+    &__wrap {
+        @include m.flex(row, nowrap, space-between, center);
+        width: calc(100% - 2.5rem);
+        margin: 0 auto;
+    }
+    &__head {
+        @include m.archive-head;
+    }
+    &__date {
+        p {
+            color: v.$mdGy;
+            font-size: v.$small-1;
+            margin: 0;
+        }
+        &--single {
+            p {
+                color: v.$mdGy;
+                margin: 0;
+            }
+        }
+    }
+    &__cat {
+        p {
+            border: 1px solid v.$mdGy;
+            color: v.$mdGy;
+            font-size: v.$small-1;
+            margin: 0;
+            padding: 0 1.5rem;
+        }
+        &--single {
+            a {
+                border: 1px solid v.$text-black;
+                padding: 0 1.5rem;
+                margin-left: 2rem;
+                transition: .4s all;
+                &:hover {
+                    background-color: v.$theme-color2;
+                    border-color: v.$theme-color2;
+                    color: v.$text-white;
+                    transition: .4s all;
+                }
+            }
+        }
+    }
+    &__pagination {
+        @include m.pagination;
+        margin-top: 0
+    }
+    &__nav {
+        @include m.content-nav;
+    }
+}

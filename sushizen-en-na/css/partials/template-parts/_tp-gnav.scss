@@ -1,0 +1,225 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// ローディング / グローバルナビゲーション
+.gnav {
+    &__container {
+        position: relative;
+        z-index: v.$z10;
+        &--inner {
+            width: 100%;
+            background-color: transparent;
+            transition: background-color .4s ease, box-shadow .4s ease;
+        }
+    }
+    &__logo {
+        position: relative;
+        &--picture {
+            display: block;
+            transition: opacity .4s ease;
+            &.is-black {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                pointer-events: none;
+            }
+            &.is-white {
+                opacity: 1;
+            }
+        }
+    }
+    &__box {
+        @include m.flex(row, wrap, space-between, center);
+        height: 6rem;
+        padding: 0 2.9375rem;
+    }
+    &__menu {
+        > ul {
+            @include m.flex(row, wrap, space-between, flex-start);
+            @include m.cluster(2.5rem);
+            > li {
+                position: relative;
+                &:last-child {
+                    background-color: rgba(v.$white, .3);
+                    border-radius: 2rem;
+                    padding: 0 1.875rem;
+                    transition: .4s ease-in;
+                    &:hover {
+                        background-color: rgba(v.$white, .5);
+                        transition: .4s ease-in;
+                    }
+                }
+                a {
+                    color: v.$white;
+                    white-space: nowrap;
+                    transition: .4s ease-in;
+                    &:hover {
+                        opacity: .8;
+                        transition: .4s ease-in;
+                    }
+                }
+                &:hover > .sub-menu {
+                    transform: scaleY(1);
+                    opacity: 1;
+                    visibility: visible;
+                    transition:
+                    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.35s ease,
+                    visibility 0s linear 0s;
+                }
+            }
+        }
+        .sub-menu {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            min-width: 10.9375rem;
+            background: rgba(v.$white, .05);
+            backdrop-filter: blur(10px);
+            transform-origin: top center;
+            transform: scaleY(0);
+            opacity: 0;
+            visibility: hidden;
+            transition:
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity .25s ease,
+            visibility 0s linear .35s;
+            z-index: 10;
+            li {
+                &:last-child {
+                    a {
+                        border-bottom: 1px solid v.$white;
+                    }
+                }
+                a {
+                    display: block;
+                    padding: .5rem .75rem;
+                    white-space: nowrap;
+                    color: v.$text-white;
+                    border-top: 1px solid v.$white;
+                    border-left: 1px solid v.$white;
+                    border-right: 1px solid v.$white;
+                    text-align: center;
+                    transition: .4s all;
+                    &:hover {
+                        background: rgba(v.$white, .2);
+                        transition: .4s all;
+                    }
+                }
+            }
+        }
+    }
+    &__modal {
+        display: none;
+        position: fixed;
+        right: 1.875rem;
+        top: 1.25rem;
+        z-index: 1001;
+        &__toggle {
+            position: relative;
+            width: 2.25rem;
+            height: 2.25rem;
+            cursor: pointer;
+            z-index: 1002;
+            transition: transform .4s ease, opacity .4s ease;
+            span {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: v.$white;
+                transition: .4s cubic-bezier(.22,1,.36,1);
+                &:nth-child(1) {
+                    top: .875rem;
+                }
+                &:nth-child(2) {
+                    bottom: .875rem;
+                }
+            }
+            &.is-open {
+                span {
+                    &:nth-child(1) {
+                        top: 1.0625rem;
+                        transform: rotate(330deg);
+                    }
+                    &:nth-child(2) {
+                        bottom: 1.0625rem;
+                        transform: rotate(-330deg);
+                    }
+                }
+            }
+        }
+    }
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(v.$black,.45);
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        visibility: hidden;
+        transition: .4s ease;
+        z-index: 998;
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(v.$theme-color1, .2);
+            backdrop-filter: blur(20px);
+            z-index: -1;
+        }
+        &.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__modal__menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100svh;
+        background: rgba(v.$theme-color2, .7);
+        transform: translateX(100%);
+        transition: transform .5s cubic-bezier(.22,1,.36,1);
+        overflow-y: auto;
+        z-index: 999;
+        &.is-open {
+            transform: translateX(0);
+        }
+
+    }
+    &__modal__content {
+        padding: 6.25rem 3.75rem 3.75rem;
+    }
+    &__modal__list {
+        list-style: none;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.375rem 0;
+            color: v.$text-white;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: .3s;
+            &:hover {
+                opacity: .6;
+            }
+        }
+        .sub-menu {
+            list-style: none;
+            margin: 0 0 1.125rem 1.25rem;
+            padding-left: 2.5rem;
+            border-left: 1px solid v.$theme-color2;
+            li {
+                border: none;
+            }
+            a {
+                padding: .625rem 0;
+                font-size: .9375rem;
+                color: v.$white;
+            }
+        }
+    }
+}
