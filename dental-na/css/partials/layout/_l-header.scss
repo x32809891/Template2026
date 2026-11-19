@@ -1,0 +1,416 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// ヘッダー（グローバルナビゲーション）のレイアウト形成する要素を定義する
+.l-header {
+    @include m.position(fixed, 0, auto, auto, 0);
+    max-width: 100%;
+    height: 130px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5% 2.5% 0;
+    z-index: v.$z100;
+    background: rgba(v.$black, 0);
+    backdrop-filter: blur(0px);
+    transition: background .3s ease, backdrop-filter .3s ease, transform .6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: scale(1);
+    transform-origin: top center;
+    &::before {
+        @include m.position(fixed, 0, auto, auto, 0);
+        @include m.gradation(
+            linear, to right, null, null,
+            v.$theme-color1 0%, v.$theme-color1 33.3%,
+            v.$theme-color2 33.3%, v.$theme-color2 66.6%,
+            v.$theme-color3 66.6%, v.$theme-color3 100%
+        );
+        content: "";
+        display: block;
+        width: 100%;
+        height: 5px;
+        z-index: v.$z1;
+    }
+    &.is-scrolled {
+        @include m.gradation(
+            linear, to bottom, null, null,
+            rgba(v.$white, .5) 0%, rgba(v.$white, .9) 100%
+        );
+        backdrop-filter: blur(10px);
+        transform: scale(1.02);
+        .l-gnav__logo {
+            h1 {
+                color: v.$black;
+            }
+        }
+    }
+}
+
+.l-gnav {
+    @include m.flex(row, nowrap, space-between, center);
+    @include m.cluster(2.5%);
+    &__logo {
+        a {
+            @include m.flex(row, nowrap, flex-start, center);
+            img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+            }
+            h1 {
+                color: v.$text-black;
+                font-size: v.$medium-4;
+                font-weight: 600;
+                white-space: nowrap;
+            }
+        }
+    }
+    &__menu {
+        width: 60%;
+        &--wrap {
+            @include m.flex(row, nowrap, space-between, center);
+            margin-bottom: .5rem;
+        }
+        div.l-gnav__menu--tel {
+            flex: 1;
+            text-align: right;
+            a {
+                color: v.$theme-color2;
+                display: inline;
+                font-size: v.$medium-4;
+                font-weight: 600;
+                transition: .4s all;
+                &:hover {
+                    opacity: .9;
+                    transition: .4s all;
+                    &::before {
+                        opacity: .9;
+                        transition: .4s all;
+                    }
+                }
+                &::before {
+                    content: "\f095";
+                    color: v.$theme-color2;
+                    font-family: "Font Awesome 6 Free";
+                    margin-right: 1%;
+                }
+                span {
+                    font-size: v.$small-3;
+                    margin-left: 1rem;
+                }
+            }
+        }
+        div.l-gnav__menu--btn {
+            flex: .4;
+            display: none;
+            ul {
+                @include m.flex(row, nowrap, flex-end, center);
+                @include m.cluster(2.5%);
+                li {
+                    a {
+                        @include m.flex(column, wrap, center, center);
+                        width: 100px;
+                        height: 30px;
+                        background-color: v.$theme-color2;
+                        border: 1px solid v.$theme-color2;
+                        border-radius: v.$r-l;
+                        color: v.$text-white;
+                        font-size: v.$small-2;
+                        font-weight: 600;
+                        transition: 0.4s all;
+                        &:hover {
+                            background-color: v.$white;
+                            color: v.$theme-color2;
+                        }
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+        &-list {
+            @include m.flex(row, wrap, flex-end, flex-start);
+            @include m.cluster(4%);
+            li {
+                a {
+                    color: v.$text-black;
+                    font-size: v.$medium-1;
+                    font-weight: 600;
+                    transition: .4s all;
+                    &:hover {
+                        color: v.$theme-color1;
+                        transition: .4s all;
+                    }
+                }
+            }
+        }
+        &-item {
+            &.--has-child {
+                position: relative;
+                height: 100%;
+                pointer-events: auto;
+                &:hover,
+                &:focus-within {
+                    .l-gnav__menu-child {
+                        max-height: 500px;
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+                }
+            }
+        }
+        &-child {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 0;
+            min-width: 125px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height .4s ease, opacity .3s ease, padding .3s ease;
+            &:hover {
+                max-height: 500px;
+                opacity: 1;
+            }
+            a {
+                background: rgba(v.$white, .8);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid v.$white;
+                display: block;
+                font-size: v.$regular !important;
+                padding: 8px 0;
+                text-align: center;
+                &:hover {
+                    background-color: v.$theme-color4;
+                    transition: .4s all;
+                }
+                &:last-child {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+    &__btn {
+        width: fit-content;
+        &-list {
+            @include m.flex(row, nowrap, flex-end, center);
+            @include m.cluster(10px);
+            li {
+                a {
+                    @include m.flex(column, wrap, center, center);
+                    width: 70px;
+                    height: 70px;
+                    background-color: v.$theme-color2;
+                    border: 1px solid v.$theme-color2;
+                    border-radius: v.$r-half;
+                    color: v.$text-white;
+                    font-size: v.$small-2;
+                    font-weight: 600;
+                    transition: .4s all;
+                    &:hover {
+                        background-color: v.$white;
+                        color: v.$theme-color2;
+                        transition: .4s all;
+                        .fa-solid {
+                            color: v.$theme-color2;
+                        }
+                    }
+                    p {
+                        font-weight: 600;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+    &__hum {
+        display: none;
+        &-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(v.$black, .35);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .4s ease;
+            z-index: v.$z-1;
+            &.is-open {
+                opacity: 1;
+                pointer-events: auto;
+                display: block;
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        &--line {
+            @include m.flex(column, nowrap, center, center);
+            @include m.cluster(4px);
+            background: v.$theme-color2;
+            border-radius: v.$r-xl;
+            width: 60px;
+            height: 44px;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            z-index: 1001;
+            &.is-open span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            &.is-open span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            &.is-open span:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+            }
+            span {
+                display: block;
+                width: 26px;
+                height: 3px;
+                background: v.$white;
+                border-radius: v.$r-s;
+                transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.35s ease;
+                transform-origin: center;
+            }
+        }
+        &--menu {
+            position: relative;
+            ul {
+                @include m.flex(column, nowrap, flex-start, stretch);
+                @include m.position(fixed, 0, 0, auto, auto);
+                list-style: none;
+                width: min(425px, 100vw);
+                height: 100vh;
+                height: 100dvh;
+                background: v.$white;
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+                padding: 100px 36px 48px;
+                gap: 0;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+                box-shadow: -8px 0 40px rgba(v.$black, .08);
+                overflow-y: auto;
+                overflow-x: auto;
+                &::before {
+                    @include m.bg-img("svg/bg-deco05.svg", contain);
+                    @include m.position(absolute, 0, auto, auto, 0);
+                    content: "";
+                    width: 300px;
+                    height: 68px;
+                    pointer-events: none;
+                    z-index: v.$z-1;
+                }
+                &::after {
+                    @include m.bg-img("svg/bg-deco05.svg", contain);
+                    @include m.position(absolute, auto, 0, 0, auto);
+                    content: "";
+                    width: 300px;
+                    height: 68px;
+                    pointer-events: none;
+                    transform: rotate(180deg);
+                    z-index: v.$z-1;
+                }
+                &.is-open {
+                    transform: translateX(0);
+                }
+                li {
+                    opacity: 0;
+                    transform: translateX(16px);
+                    transition: opacity .3s ease, transform .3s ease;
+                    a {
+                        display: block;
+                        padding: 16px 0;
+                        font-size: v.$regular;
+                        font-weight: 600;
+                        letter-spacing: .08em;
+                        text-decoration: none;
+                        color: v.$text-black;
+                        border-bottom: 1px solid v.$mdGy;
+                        transition: opacity .2s, padding-left .2s;
+                    }
+                    &.is-visible {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                    &:nth-child(1) {
+                        border-top: 1px solid v.$mdGy;
+                        transition-delay: 0.15s;
+                    }
+                    &:nth-child(2) {
+                        transition-delay: 0.20s;
+                    }
+                    &:nth-child(3) {
+                        transition-delay: 0.25s;
+                    }
+                    &:nth-child(4) {
+                        transition-delay: 0.35s;
+                    }
+                    &:nth-child(5) {
+                        transition-delay: 0.40s;
+                    }
+                    &:nth-child(6) {
+                        transition-delay: 0.45s;
+                    }
+                    &:nth-child(7) {
+                        transition-delay: 0.50s;
+                    }
+                    &:last-child {
+                        border: none;
+                        margin: 2rem auto 0;
+                        div {
+                            &:nth-child(1) {
+                                a {
+                                    border: none;
+                                    color: v.$theme-color2;
+                                    font-size: v.$medium-3;
+                                    font-weight: 600;
+                                    line-height: v.$lh-xxx-tight;
+                                    margin-bottom: 1.25rem;
+                                    text-align: center;
+                                    &:hover {
+                                        color: v.$theme-color1;
+                                    }
+                                    &::before {
+                                        content: "\f095";
+                                        color: v.$theme-color2;
+                                        font-family: "Font Awesome 6 Free";
+                                        margin-right: 1%;
+                                    }
+                                    span {
+                                        display: inline-block;
+                                        font-size: v.$small-3;
+                                    }
+                                }
+                            }
+                            &:nth-child(2) {
+                                @include m.flex(column, wrap, center, center);
+                                a {
+                                    @include m.flex(row, wrap, center, center);
+                                    @include m.cluster(2.5%);
+                                    background-color: v.$theme-color2;
+                                    border: 1px solid v.$theme-color2;
+                                    border-radius: v.$r-full;
+                                    color: v.$text-white;
+                                    font-weight: 600;
+                                    width: 295px;
+                                    height: 45px;
+                                    padding: 0;
+                                    margin-bottom: .5rem;
+                                    transition: .4s all;
+                                    &:hover {
+                                        background-color: v.$white;
+                                        color: v.$theme-color2;
+                                        transition: .4s all;
+                                    }
+                                    p {
+                                        margin: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

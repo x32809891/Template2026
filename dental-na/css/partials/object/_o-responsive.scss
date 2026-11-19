@@ -1,0 +1,480 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// 全ページのプロジェクトの固有のスタイルや要素を定義する
+// 1440px以下
+@include m.mq(max, 1440) {
+    // ヘッダー
+    .l-gnav__logo a h1 {font-size: v.$medium-2;}
+    .l-gnav__logo a img {width: 60px; height: 60px;}
+
+    // トップページ
+    // 当院の3つの特徴
+    .p-feature__list {justify-content: center;}
+    .p-feature__item {flex: 0 0 calc((100% - 30px) / 2);}
+    .p-feature__img {aspect-ratio: 3 / 3;}
+    .p-feature__img img {width: 100%; height: 100%;}
+
+    // 診療内容
+    .p-treatments__item {flex: 0 0 calc((100% - 3%) / 2);}
+
+    // 下層ページ
+    // レイアウト
+    .l-container.clinic-aboutus::before {margin-left: -20%;}
+
+    // 当院について
+    .p-clinic-message__img {right: -20%;}
+    .p-clinic-message__img img {height: auto;}
+}
+
+// 1280px以下
+@include m.mq(max, 1280) {
+    // ヘッダー
+    .l-gnav {gap: 0;}
+    .l-gnav__menu {width: 75%;}
+    .l-gnav__menu div.l-gnav__menu--btn {display: block;}
+    .l-gnav__menu div.l-gnav__menu--tel {margin-right: 1rem;}
+    .l-gnav__btn-list {display: none;}
+    .l-gnav__btn {width: auto;}
+
+    // フッター
+    .l-details__box {flex-direction: column-reverse;}
+    .l-details__img {width: 92.5%; flex: none;}
+    .l-details__txt {padding: 0; margin: 0 auto 5rem;}
+
+    .l-details__copyright {margin-bottom: 0;}
+
+    // トップページ
+    // レイアウト
+    .l-container.news,
+    .l-container.feature,
+    .p-treatments__menu,
+    .p-concept {max-width: calc(100% - 200px);}
+    .l-container.concept::after {margin-bottom: -15%;}
+    .l-container.blog::before {margin-top: -15%;}
+    .l-container.blog::after {margin-bottom: -10%;}
+
+    // 診療内容
+    .p-treatments__item::before {width: 80px; height: 80px;}
+
+    // 下層ページ
+    // レイアウト
+    .l-main.page,
+    .l-container.breadcrumb {max-width: calc(100% - 200px);}
+
+    // 当院について
+    .p-clinic-message {max-width: calc(100% - 200px);}
+    .p-clinic-message__detail {flex-direction: column; padding: 2.5rem;}
+    .p-clinic-message__detail div {width: 100%; margin-bottom: 5%;}
+    .p-clinic-message__detail div:last-child {margin-bottom: 0;}
+    .p-clinic-message__detail div p, .p-clinic-message__detail div ul {flex: 1;}
+}
+
+// 1024px以下
+@include m.mq(max, 1024) {
+    // ヘッダー
+    .l-header {height: 100px; padding: 2.5% 2.5% 0;}
+    .l-gnav__menu-list {@include m.cluster(2.5%);}
+    .l-gnav__menu-list li a {font-size: v.$small-1;}
+    .l-gnav__menu div.l-gnav__menu--tel a {font-size: v.$medium-2;}
+    .l-gnav__menu div.l-gnav__menu--tel a span {margin-left: .5rem;}
+
+    // トップページ
+    // レイアウト
+    .l-container.mv {margin-top: 100px;}
+    .l-container.news,
+    .l-container.feature,
+    .p-treatments__menu,
+    .p-concept {max-width: calc(100% - 100px);}
+    .l-container.blog::before, .l-container.blog::after {height: 185px;}
+
+    // 共通
+    .p-section__ttl {margin-bottom: 6%;}
+    .p-section__ttl p {font-size: v.$small-2;}
+    .p-section__ttl h2 {font-size: v.$medium-2; margin: 0 0 15px 0;}
+    .p-section__btn a {max-width: 275px; padding: 1.25rem;}
+
+    .c-dot-circle--lg {width: 125px; height: 125px;}
+    .c-dot-circle--md {width: 75px; height: 75px;}
+
+    // メインビジュアル
+    .p-mv__txt p {font-size: v.$medium-4;}
+
+    // コンセプト
+    .p-concept__txt h3 {font-size: v.$medium-4;}
+
+    // 当院の3つの特徴
+    .p-feature__item {margin-bottom: 8%;}
+    .p-feature__item:nth-child(1) .p-feature__txt h3,
+    .p-feature__item:nth-child(2) .p-feature__txt h3,
+    .p-feature__item:nth-child(3) .p-feature__txt h3 {font-size: v.$medium-2;}
+
+    // 診療内容
+    .p-treatments__bg {height: 60svh;}
+    .p-treatments__bg span::before {width: 375px; height: 205px;}
+    .p-treatments__bg span::after {width: 375px; height: 205px;}
+    .p-treatments__item {flex: 0 0 calc(98% / 2);}
+
+    // 採用情報
+    .p-recruit,.p-clinic {max-width: 90%;}
+    .p-recruit__slide, .p-clinic__slide {height: 450px;}
+
+    // ブログ
+    .p-blog__date {flex: .5;}
+
+    // 下層ページ
+    // レイアウト
+    .l-main.page,
+    .l-container.breadcrumb {max-width: calc(100% - 100px);}
+
+    // 下層ヘッダー
+    .p-header__img {padding: 6.5rem 0 0 0;}
+    .p-header__txt::after {height: 100px; padding: 0px 8rem; bottom: -2%;}
+    .p-header__txt h2 {font-size: v.$medium-3;}
+
+    // ブログ一覧
+    .p-single-blog {flex-direction: column;}
+    .p-single-blog--left {margin-bottom: 3rem;}
+    .p-single-blog--right {width: 90%;}
+    .p-single-blog--right ul li.widget_block {margin-bottom: 3rem;}
+    .p-single-blog--right ul li.widget_block:last-child {margin-bottom: 0;}
+
+    // 当院について
+    .p-clinic-message {max-width: calc(100% - 100px);}
+    .p-clinic-message__contents {flex-direction: column; gap: 2.5rem; margin-bottom: 4%;}
+    .p-clinic-message__box {padding-right: 0;}
+    .p-clinic-message__txt h3 {font-size: v.$medium-3;}
+    .p-clinic-message__txt p:nth-child(2) {margin-bottom: 2.5rem;}
+    .p-clinic-message__img {position: relative; right: 0; top: auto; width: 100%; flex: 0 0 auto;}
+    .p-clinic-message__img img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; max-height: 525px; object-fit: cover;}
+
+    .p-clinic-aboutus__box {flex-direction: column-reverse; gap: 2.5rem;}
+    .p-clinic-aboutus__table {flex: auto; width: 100%;}
+    .p-clinic-aboutus__table table {width: 100%;}
+
+    .p-clinic-facility__gallery ul li .p-clinic-facility__ttl h3 {padding: 0.25rem 1rem; margin: 1rem;}
+
+    // 採用情報
+    .p-recruit-job-desc__wrap {flex-direction: column-reverse;}
+    .p-recruit-job-desc__table {flex: auto; width: 100%;}
+    .p-recruit-job-desc__table table {width: 100%; margin-bottom: 5%;}
+    .p-recruit-job-desc__img {@include m.flex(row, wrap, center, center); width: 100%; gap: 4rem;}
+    .p-recruit-job-desc__img div:nth-child(1) {margin-bottom: 0;}
+    .p-recruit-job-desc__img div:nth-child(1) img {width: 50%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;}
+    .p-recruit-job-desc__img div:nth-child(2) {text-align: center;}
+    .p-recruit-job-desc__img div:nth-child(2) img {width: 40%; height: auto; aspect-ratio: 16 / 9;object-fit: cover;}
+}
+
+// 850px以下
+@include m.mq(max, 850) {
+    // ヘッダー
+    .l-header {height: 85px;}
+    .l-header.is-scrolled {transform: scaleX(1);}
+    .l-gnav__logo {width: 50%;}
+    .l-gnav__menu {display: none;}
+    .l-gnav__hum {display: block;}
+
+    // フッター
+    .l-access__box {width: calc(100% / 2);}
+    .l-access__map iframe {width: 100%; height: 425px; border-radius: 0;}
+
+    .l-fixed-btn {display: block;}
+    .l-pagetop a {width: 70px; height: 70px;}
+    .l-pagetop__tag {font-size: v.$small-2;}
+
+    // トップページ
+    // レイアウト
+    .l-container.mv {margin-top: 85px;}
+    .l-container.concept {height: 100svh;}
+
+    // 当院の3つの特徴
+    .p-feature__num p span {width: 85px; height: 85px;}
+    .p-feature__img {margin-bottom: 2rem;}
+    .p-feature__txt {width: 100%;}
+
+    // 診療内容
+    .p-treatments__menu {margin: -30% auto 0;}
+    .p-treatments__img img {width: 60px; height: 60px;}
+    .p-treatments__txt h3 {margin-bottom: .5rem;}
+    .p-treatments__item {height: 295px;}
+    .p-treatments__item::before {width: 70px; height: 70px;}
+    .p-treatments__item a {height: 295px; padding: 4%;}
+    .p-treatments__btn {margin: 1rem; width: 25px; height: 25px;}
+    .p-treatments__btn span {width: 25px; height: 25px;}
+
+    // ブログ
+    .p-blog .p-blog__prev, .p-blog .p-blog__next {width: 50px; height: 50px;}
+    .p-blog .swiper-button-next, .p-blog .swiper-rtl .swiper-button-prev {right: var(--swiper-navigation-sides-offset, 50px);}
+    .p-blog .swiper-button-prev, .p-blog .swiper-rtl .swiper-button-next {left: var(--swiper-navigation-sides-offset, 50px);}
+
+    // 採用情報&当院について
+    .p-recruit, .p-clinic {max-width: 90%; margin: 0 auto;}
+    .p-recruit::before {bottom: auto; top: 45%; left: 0;}
+    .p-clinic::after {bottom: auto; top: 45%; right: 0;}
+    .p-recruit__box, .p-clinic__box {display: block;}
+    .p-recruit__txt h3, .p-clinic__txt h3 {font-size: v.$medium-2;}
+    .p-recruit__txt p, .p-clinic__txt p {margin-bottom: 4%;}
+    .p-recruit__detail, .p-clinic__detail {margin-bottom: 10%;}
+    .p-recruit__slide {right: -7%;}
+    .p-clinic__slide {left: -7%;}
+
+    // 下層ページ
+    // レイアウト
+    .l-container.breadcrumb {margin: 2.5rem auto 6rem;}
+    .l-main.page {margin: 0 auto 10rem;}
+
+    // 下層ヘッダー
+    .p-header__img {padding: 5.5rem 0 0 0;}
+    .p-header__img img {height: auto;}
+    .p-header__txt p {font-size: v.$small-1;}
+    .p-header__txt h2 {font-size: v.$medium-3;}
+
+    // お知らせ詳細
+    .p-archive-blog__item {flex: 0 0 calc(100% / 2 - 1rem);}
+    .p-archive-blog__list {gap: 32px;}
+
+    // 当院について
+    .p-clinic-facility__gallery ul li {flex: 0 0 calc(100% / 2 - .5rem);}
+
+    // 採用情報
+    .p-recruit-feature ul li .p-recruit-feature__txt h3 {font-size: v.$medium-2;}
+}
+
+// 780px以下
+@include m.mq(max, 780) {
+    // フッター
+    .l-access__map iframe {height: 395px;}
+
+    .l-details__table table tr th, .l-details__table table tr td {padding: 1%;}
+    .l-details__txt {padding: 0 5%;}
+    .l-details__img {min-height: 395px;}
+
+    // トップページ
+    // レイアウト
+    .l-container.mv {margin-bottom: 10%;}
+    .l-container.concept::after {height: 175px;}
+
+    // 共通
+    .p-section__btn a {max-width: 240px; padding: 1rem;}
+    .p-section__btn a span {right: .75rem;}
+
+    .c-dot-circle--lg {width: 100px; height: 100px;}
+    .c-dot-circle--md {width: 50px; height: 50px;}
+
+    // メインビジュアル
+    .p-mv__img {width: 90svw;}
+    .p-mv__txt p {font-size: v.$medium-3;}
+
+    // お知らせ
+    .p-news__txt {width: 65%;}
+    .p-news__ttl p {font-size: v.$small-1;}
+
+    // 診療内容
+    .p-treatments__bg {height: 50svh;}
+
+    // 下層ページ
+    // パンくずリスト
+    .p-breadcrumb ol li:last-child {display: block;  max-width: 15em; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+
+    // お知らせ詳細
+    .p-single-news__thumb img {max-width: 100%;}
+    .p-single-news__txt {width: 100%;}
+
+    // 当院について
+    .p-clinic-message__detail div p {font-size: v.$medium-1;}
+    .p-clinic-facility__gallery ul li .p-clinic-facility__ttl h3 {font-size: v.$small-2; padding: .25rem 1rem; margin: 1rem;}
+
+    // 施設基準
+    .p-standard-list__contents h3 {font-size: v.$medium-2;}
+    .p-standard-list__contents ul li h4 {font-size: v.$regular; padding-bottom: .5rem; margin-bottom: .5rem;}
+    .p-standard-list__contents ul li h4::before {width: 3px;}
+    .p-standard-list__contents ul li p {font-size: v.$small-2;}
+
+    // 採用情報
+    .p-recruit-message__txt h3 {font-size: v.$medium-2;}
+
+    .p-recruit-feature ul {flex-direction: column;}
+    .p-recruit-feature ul li {flex: 0 0 calc(95%); margin-bottom: 5%;}
+    .p-recruit-feature ul li .p-recruit-feature__txt h3 {margin: 5% 0 0;}
+    .p-recruit-feature__img {aspect-ratio: 4 / 2;}
+    .p-recruit-feature__img img {width: 100%; height: 100%; object-fit: cover;}
+
+    .p-recruit-job-desc__img {gap: 2rem;}
+}
+
+// 560px以下
+@include m.mq(max, 560) {
+    // ヘッダー
+    .l-header {height: 75px;}
+    .l-gnav__logo {width: 60%;}
+
+    // フッター
+    .l-details__box {padding: 15% 0 0;}
+    .l-access__map iframe {height: 375px;}
+    .l-access__box {width: 80%; bottom: -15%;}
+    .l-access__box p {font-size: v.$medium-1;}
+
+    .l-details__logo a h1 {font-size: v.$medium-2;}
+    .l-details__logo a img {width: 60px; height: 60px;}
+    .l-details__txt {margin: 0 auto 2rem; padding: 0 2rem;}
+    .l-details__sns ul li a {width: 30px; height: 30px;}
+
+    .l-pagetop {right: 6%;}
+    .l-pagetop a {width: 60px; height: 60px;}
+
+    // トップページ
+    // レイアウト
+    .l-container.mv {margin-top: 75px;}
+    .l-container.news, .l-container.feature, .p-treatments__menu, .p-concept {max-width: calc(100% - 50px);}
+    .l-container.concept {height: 75svh;}
+    .l-container.concept::after {height: 150px; margin-bottom: -20%;}
+    .l-container.blog::before, .l-container.blog::after {height: 115px;}
+
+    // 共通
+    .p-section__btn a span {width: 35px; height: 35px;}
+    .p-section__btn a span::before, .p-section__btn a span::after {padding: 0 .7rem;}
+
+    .c-dot-circle--lg {width: 75px; height: 75px; left: 20% !important;}
+    .c-dot-circle--md {width: 40px; height: 40px; left: 30% !important;}
+
+    // メインビジュアル
+    .p-mv__txt p {font-size: v.$medium-2;}
+
+    // お知らせ
+    .p-news__thumb {margin-right: auto;}
+    .p-news__thumb img {max-width: 125px;}
+    .p-news__link {flex-direction: column; padding: 5% 0;}
+    .p-news__txt {width: 100%;}
+    .p-news__btn {margin-left: auto;}
+
+    // コンセプト
+    .p-concept__txt h3 {font-size: v.$medium-2;}
+
+    // 当院の3つの特徴
+    .p-feature__item {flex: 0 0 calc(100%); margin-bottom: 0;}
+    .p-feature__img {margin-bottom: 2rem; aspect-ratio: 3 / 2;}
+    .p-feature__num p span {width: 75px; height: 75px; font-size: v.$large-1;}
+    .p-feature__num p span::before {width: 20px; height: 20px; inset: -25% auto auto 0%;}
+    .p-feature__num p span::after {width: 20px; height: 20px; inset: auto -25% 0% auto;}
+
+    // 診療内容
+    .p-treatments__bg {height: 40svh;}
+    .p-treatments__img img {width: 50px; height: 50px;}
+    .p-treatments__txt h3 {font-size: v.$small-1; margin-bottom: .5rem;}
+    .p-treatments__txt p {display: none;}
+    .p-treatments__item,.p-treatments__item a {height: 175px;}
+    .p-treatments__item::before {width: 60px; height: 60px;}
+
+    // 採用情報
+    .p-recruit__slide, .p-clinic__slide {height: 325px;}
+
+    // ブログ
+    .p-blog .swiper-button-prev, .p-blog .swiper-rtl .swiper-button-next {left: var(--swiper-navigation-sides-offset, 25px);}
+    .p-blog .swiper-button-next, .p-blog .swiper-rtl .swiper-button-prev {right: var(--swiper-navigation-sides-offset, 25px);}
+    .p-blog .p-blog__prev, .p-blog .p-blog__next {width: 35px; height: 35px;}
+
+    // 下層ページ
+    // レイアウト
+    .l-main.page,
+    .l-container.breadcrumb {max-width: calc(100% - 50px);}
+    .l-main.page {margin: 0 auto 8rem;}
+
+    // 下層ヘッダー
+    .p-header__img {padding: 5rem 0 0 0;}
+    .p-header__img img {width: 92.5%;}
+    .p-header__txt::after {height: 80px; padding: 0px 6rem;}
+    .p-header__txt p {font-size: v.$small-2;}
+    .p-header__txt h2 {font-size: v.$medium-2;}
+
+    // パンくずリスト
+    .p-breadcrumb ol li, .p-breadcrumb ol li a {font-size: v.$small-1;}
+    .p-breadcrumb ol li::after {height: 16px; margin: 0 1rem;}
+
+    // ページネーション
+    .p-pagination {margin: 3rem 0 0;}
+    .p-pagination .page-numbers {width: 40px; height: 40px;}
+
+    // 当院について
+    .p-clinic-message {max-width: calc(100% - 50px);}
+    .p-clinic-message__txt p:nth-child(2) {margin-bottom: 1.5rem;}
+    .p-clinic-message__txt p:last-child span {font-size: v.$medium-2;}
+
+    .p-clinic-message__detail div {flex-direction: column;}
+    .p-clinic-aboutus__map iframe {height: 325px;}
+
+    .p-clinic-faq__question {gap: .75rem; padding: 1rem;}
+    .p-clinic-faq__answer-inner {margin: 0 1rem; gap: .75rem;}
+
+    // 施設基準
+    .p-standard-list__contents h3 {font-size: v.$medium-1;}
+
+    // 採用情報
+    .p-recruit-message__txt p {font-size: v.$regular;}
+    .p-recruit-message__arrow svg {width: 70%;}
+
+    .p-recruit-job-desc__img div:nth-child(1) img {width: 60%;}
+    .p-recruit-job-desc__img div:nth-child(2) img {width: 50%;}
+
+    .p-recruit-feature ul li .p-recruit-feature__num p span {width: 75px; height: 75px; font-size: v.$medium-4;}
+    .p-recruit-feature ul li .p-recruit-feature__num p span::before {width: 20px; height: 20px; inset: -27% auto auto 0%;}
+    .p-recruit-feature ul li .p-recruit-feature__num p span::after {width: 20px; height: 20px; inset: auto -27% 0% auto;}
+}
+
+// 425px以下
+@include m.mq(max, 425) {
+    // ヘッダー
+    .l-header {padding: 3.5% 4.5% 0;}
+    .l-gnav__logo a img {width: 45px; height: 45px;}
+    .l-gnav__logo a h1 {font-size: v.$regular;}
+    .l-gnav__hum--line {width: 54px; height: 40px;}
+
+    // フッター
+    .l-access__box {width: 85%;}
+    .l-access__box p {margin: 0 0 3% 0;}
+    .l-access__map iframe {height: 325px;}
+
+    // トップページ
+    // レイアウト
+    .l-container.concept::after {height: 125px;}
+    .l-container.blog::before {margin-top: -20%;}
+    .l-container.blog::after {margin-bottom: -20%;}
+
+    // 診療内容
+    .p-treatments__menu {margin: -50% auto 0;}
+    .p-treatments__item {flex: 0 0 100%;}
+
+    // ブログ
+    .p-blog__box {padding: 0 1rem;}
+
+    // 下層ページ
+    // レイアウト
+    .l-container.breadcrumb {margin: 1.5rem auto 5rem;}
+
+    // 下層ヘッダー
+    .p-header__txt::after {height: 70px; padding: 0px 5rem;}
+
+    // お知らせ詳細
+    .p-single-news__thumb {padding-bottom: 1.5rem; margin-bottom: 1.5rem;}
+
+    // ブログ一覧
+    .p-archive-blog__list {flex-direction: column;}
+    .p-archive-blog__thumb {margin-bottom: 1rem;}
+
+    // ブログ詳細
+    .p-single-blog__thumb {padding-bottom: 1.5rem; margin-bottom: 1.5rem;}
+
+    :where(.wp-block-search__input) {padding: .5rem !important;}
+    .wp-element-button, .wp-block-button__link {padding: .5rem !important;}
+
+    // 当院について
+    .p-clinic-aboutus__table table tr th,
+    .p-clinic-aboutus__table table tr td {display: block; width: auto;}
+    .p-clinic-aboutus__table table tr td {border-bottom-width: 2px;}
+
+    .p-clinic-facility__gallery ul li {flex: 0 0 100%;}
+
+    // 採用情報
+    .p-recruit-job-desc__table table tr th,
+    .p-recruit-job-desc__table table tr td {display: block; width: auto;}
+    .p-recruit-job-desc__table table tr td {border-bottom-width: 2px;}
+}

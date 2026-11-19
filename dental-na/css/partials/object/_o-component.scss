@@ -1,0 +1,51 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// 再利用可能なUIや抽象的な要素を定義する
+// ドット丸のあしらい
+$dot-colors: (
+    color1: v.$theme-color1,
+    color2: v.$theme-color2,
+    color3: v.$theme-color3,
+);
+
+.c-dot-circle {
+    --dot-orbit: calc(var(--dot-size) * 0.66);
+    position: absolute;
+    box-sizing: border-box;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border: var(--dot-border, 3px) dotted var(--dot-color);
+    border-radius: v.$r-half;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
+    animation: orbit-ccw var(--dot-duration) linear infinite;
+    animation-delay: var(--dot-delay, 0s);
+
+    // カラー
+    @each $name, $color in $dot-colors {
+        &--#{$name} { --dot-color: #{$color}; }
+    }
+
+    // サイズ
+    &--lg {
+        --dot-size: clamp(90px, 12vw, 150px);
+        --dot-duration: 16s;
+    }
+    &--md {
+        --dot-size: clamp(60px, 8vw, 100px);
+        --dot-duration: 10s;
+    }
+
+    &--reverse { animation-direction: reverse; }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@keyframes orbit-ccw {
+    from { transform: rotate(0deg)    translateX(var(--dot-orbit)) rotate(0deg); }
+    to   { transform: rotate(-360deg) translateX(var(--dot-orbit)) rotate(360deg); }
+}

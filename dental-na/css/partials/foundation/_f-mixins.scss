@@ -1,0 +1,322 @@
+@use "sass:list";
+@use "f-variables" as v;
+
+// =======================================================================
+// Theme Color
+// =======================================================================
+// テーマカラーを設定するmixinです。
+// base.scssを参照し、カラーを変更したい場合は、variables.scssとbase.scssを見比べながら対応カラーを変更してください。
+// 使用例:
+// @include m.theme(#ff5722, #03a9f4, #8bc34a, #212121, #f5f5f5, #bdbdbd, #ffffff, #3f51b5);
+@mixin theme($color-primary, $color-secondary, $color-tertiary, $color-text, $color-surface, $color-stroke, $color-bg, $color-link) {
+    --color-primary: #{$color-primary};
+    --color-secondary: #{$color-secondary};
+    --color-tertiary: #{$color-tertiary};
+    --color-text: #{$color-text};
+    --color-surface: #{$color-surface};
+    --color-stroke: #{$color-stroke};
+    --color-bg: #{$color-bg};
+    --color-link: #{$color-link};
+}
+
+// =======================================================================
+// Media Query
+// =======================================================================
+// メディアクエリを簡単に記述するためのmixinです。
+// `min`または`max`とサイズを指定して使用します。
+// 使用例:
+// @include m.mq(min, 768) { ... }
+@mixin mq($type, $size) {
+    @if $type == min {
+        @media (min-width: #{$size}px) {
+            @content;
+        }
+    } @else if $type == max {
+        @media (max-width: #{$size}px) {
+            @content;
+        }
+    }
+}
+
+// =======================================================================
+// Container Query
+// =======================================================================
+// コンテナクエリを設定するmixinです。
+// 名前と条件を指定して使用します。
+// 使用例:
+// @include m.cq(main-container, min, width, 500px) { ... }
+@mixin cq($container-name, $type: max, $feature: width, $value) {
+    @if $container-name {
+        @container #{$container-name} (#{ $type }-#{ $feature }: #{ $value }) {
+            @content;
+        }
+    } @else {
+        @container (#{ $type }-#{ $feature }: #{ $value }) {
+            @content;
+        }
+    }
+}
+
+// =======================================================================
+// Touch Device (Pointer: Coarse)
+// =======================================================================
+// タッチデバイス（指で操作するデバイス）用のスタイルを設定するmixinです。
+// これにより、タッチ操作を前提にしたスタイルを適用できます。
+// 使用例:
+// @include m.touch-device {
+//   /* タッチデバイス用のスタイル */
+// }
+@mixin touch-device {
+    @media (pointer: coarse) {
+        @content;
+    }
+}
+
+// =======================================================================
+// Page ID Selector
+// =======================================================================
+// 特定のページIDに応じたスタイルを定義するためのmixinです。
+// 使用例:
+// @include m.page-id-selector(42) { ... }
+@mixin page-id-selector($pid) {
+    .page-id-#{$pid} {
+        @content;
+    }
+}
+
+// =======================================================================
+// Outline
+// =======================================================================
+// 要素にアウトラインを付与するmixinです。
+// `state`に1を指定すると適用され、アウトラインの色は`$color`で指定します。
+// 使用例:
+// @include m.outline(1, red);
+@mixin outline($state:0, $color:blue) {
+    @if $state == 1 {
+        border: 2px solid $color;
+    }
+}
+
+// =======================================================================
+// Destyle List
+// =======================================================================
+// リストのデフォルトスタイルを無効化するmixinです。
+// 使用例:
+// @include m.destyle-list;
+@mixin destyle-list {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+// =======================================================================
+// Text Styling
+// =======================================================================
+// テキストの基本スタイルを設定するmixinです。
+// フォントサイズ、色、フォントファミリー、フォントウェイト、テキストの変換（大文字、小文字など）を設定できます。
+// 使用例:
+// @include m.text(16px, #333, Arial, 700, uppercase);
+@mixin text($size:v.$regular, $color:var(--color-text), $lang:v.$default, $weight:500, $t-transform:none) {
+    color: $color;
+    font-size: $size;
+    font-family: $lang;
+    font-weight: $weight;
+    text-transform: $t-transform;
+}
+
+// =======================================================================
+// Flexbox Layout
+// =======================================================================
+// Flexboxの基本プロパティを設定するmixinです。
+// 使用例:
+// @include m.flex(column, wrap, center, center);
+@mixin flex($direction:row, $wrap:nowrap, $justify-content:flex-start, $align-items:stretch) {
+    display: flex;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+// =======================================================================
+// Grid Layout
+// =======================================================================
+// グリッドレイアウトの設定を行うmixinです。
+// 列数、行数、ギャップ（縦横方向の間隔）を指定して、簡単にグリッドを構築できます。
+// 使用例:
+// @include m.grid(3, 2, 20px); // 3列2行のグリッド、ギャップは20px
+@mixin grid($cols, $rows: auto, $gap: 10px) {
+    display: grid;
+    grid-template-columns: repeat($cols, 1fr);
+    grid-template-rows: repeat($rows, 1fr);
+    gap: $gap;
+}
+
+// =======================================================================
+// Column Layout
+// =======================================================================
+// レスポンシブグリッド用の列幅を計算するmixinです。
+// 使用例:
+// @include m.column(3);
+@mixin column($cols) {
+    width: calc(100% / $cols);
+}
+
+// =======================================================================
+// Positioning
+// =======================================================================
+// 要素の位置を簡潔に指定できるmixinです。
+// `top`, `right`, `bottom`, `left`の位置を指定し、`position`プロパティを設定します。
+// 使用例:
+// @include m.position(absolute, 10px, auto, 0, 0);
+@mixin position($pos: absolute, $top: 0, $right: 0, $bottom: 0, $left: 0) {
+    position: $pos;
+    inset: $top $right $bottom $left;
+    @if $top == 0 and $right == 0 and $bottom == 0 and $left == 0 {
+        margin: auto;
+    }
+}
+
+// =======================================================================
+// Stack Layout
+// =======================================================================
+// 要素同士の間隔を設定するスタックレイアウトのmixinです。
+// 使用例:
+// @include m.stack(20px);
+@mixin stack($space) {
+    > * + * {
+        margin-top: $space;
+    }
+}
+
+// =======================================================================
+// Cluster Layout
+// =======================================================================
+// Flexboxのgapプロパティを設定するmixinです。
+// 使用例:
+// @include m.cluster(10px);
+@mixin cluster($gap) {
+    gap: $gap;
+}
+
+// =======================================================================
+// Default Styles for img Elements
+// =======================================================================
+// img要素のデフォルトスタイルを設定するmixinです。
+// これにより、画像の高さと幅を100%に設定し、アスペクト比を維持したまま、
+// 画像が枠内で中央にフィットするようにします。
+// 使用例:
+// @include m.img-default;
+@mixin img-default {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+}
+
+// =======================================================================
+// Animation
+// =======================================================================
+// アニメーションを指定するmixinです。
+// アニメーション名、時間、タイミング関数、繰り返し回数、方向、終了状態、遅延時間を設定できます。
+// 使用例:
+// @include m.anime(fadeIn, 2s, ease, infinite, alternate);
+@mixin anime($nam, $dur: 1s, $tim: ease-in-out, $ite: 1, $dir: normal, $fil: forwards, $del:inherit) {
+    animation-name: $nam;
+    animation-duration: $dur;
+    animation-timing-function: $tim;
+    animation-iteration-count: $ite;
+    animation-direction: $dir;
+    animation-fill-mode: $fil;
+    animation-delay: $del;
+}
+
+// =======================================================================
+// Background Image
+// =======================================================================
+// 背景画像を簡単に設定できるmixinです。
+// 画像ファイル名、背景サイズ、繰り返し、背景位置を指定できます。
+// 使用例:
+// @include m.bg-img('example.jpg', cover, no-repeat, center, center);
+@mixin bg-img($fileName, $siz:cover, $rep:no-repeat, $posX:center, $posY:center) {
+    background-image: url(v.$path + $fileName);
+    background-size: $siz;
+    background-repeat: $rep;
+    background-position: $posX $posY;
+}
+
+// =======================================================================
+// Gradation
+// =======================================================================
+// グラデーションを設定するmixinです。
+// 線形グラデーション（linear-gradient）と円形グラデーション（radial-gradient）の両方に対応。
+// グラデーションの種類、方向（または形状）、色の停止位置を指定できます。
+//
+// 使用例:
+// 線形グラデーション:
+// @include gradation(linear, to right, red, blue);
+// @include gradation(linear, to bottom, null, null, red 10%, blue 90%);
+//
+// 円形グラデーション:
+// @include gradation(radial, circle, red, blue);
+// @include gradation(radial, ellipse, null, null, red 10%, blue 90%);
+@mixin gradation($type: linear, $direction: to bottom, $topColor: null, $bottomColor: null, $colorStops...) {
+    @if $type == radial {
+        @if list.length($colorStops) > 0 {
+            background: radial-gradient($direction, $colorStops...);
+        } @else if $topColor != null and $bottomColor != null {
+            background: radial-gradient($direction, $topColor, $bottomColor);
+        } @else {
+            background: radial-gradient(circle, $Bk, $Wt);
+        }
+    } @else {
+        @if list.length($colorStops) > 0 {
+            background: linear-gradient($direction, $colorStops...);
+        } @else if $topColor != null and $bottomColor != null {
+            background: linear-gradient($direction, $topColor, $bottomColor);
+        } @else {
+            background: linear-gradient(to bottom, $Bk, $Wt);
+        }
+    }
+}
+
+// =======================================================================
+// Overlay
+// =======================================================================
+// 背景オーバーレイを設定するmixinです。
+// 色、透明度、z-indexを指定できます。
+// 使用例:
+// @include m.overlay(#000, 0.8, 2);
+@mixin overlay($color:v.$text-black, $opacity:.5, $z-index:1) {
+    background-color: rgba($color,$opacity);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: $z-index;
+}
+
+// =======================================================================
+// table
+// =======================================================================
+@mixin table-style($th-bg-color: v.$theme-color4, $td-border-color: v.$theme-color1) {
+    border-collapse: separate;
+    border-spacing: 10px;
+    tr {
+        th, td {
+            padding: 1rem;
+        }
+        th {
+            background-color: $th-bg-color;
+            border-radius: v.$r-s;
+            color: v.$text-gray;
+            width: 25%;
+        }
+        td {
+            border-bottom: 3px dotted $td-border-color;
+            width: 75%;
+        }
+    }
+}

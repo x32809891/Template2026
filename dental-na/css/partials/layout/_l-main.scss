@@ -1,0 +1,168 @@
+@use "../foundation/f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// ページ（トップ・下層）のレイアウトを形成する要素を定義する
+// ヘッダー / フッター
+.l-container {
+    &.schedule {
+        position: relative;
+    }
+}
+
+// トップページ
+.l-main {
+    overflow: hidden;
+}
+
+.l-container {
+    &.mv {
+        position: relative;
+        margin-bottom: 12.5%;
+        margin-top: 130px;
+        isolation: isolate;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            transform: translateY(-55%);
+            background: url(../img/svg/bg-deco01.svg) center / contain no-repeat;
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+    &.news {
+        position: relative;
+        max-width: calc(100% - 400px);
+        margin: 0 auto 10%;
+        width: 100%;
+    }
+    &.concept {
+        @include m.bg-img("top/concept_bg.jpg", cover);
+        border-top-left-radius: v.$r-xl;
+        border-top-right-radius: v.$r-xl;
+        height: 80svh;
+        display: grid;
+        align-items: center;
+        margin: 0 auto 10%;
+        position: relative;
+        overflow-x: clip;
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(v.$white, .2);
+            backdrop-filter: blur(10px);
+            border-top-left-radius: v.$r-xl;
+            border-top-right-radius: v.$r-xl;
+        }
+        &::after {
+            @include m.bg-img("svg/bg-deco03.svg");
+            @include m.position(absolute, auto, auto, 0, 0);
+            content: "";
+            max-width: 100%;
+            width: 100%;
+            height: 255px;
+            margin-bottom: -10%;
+        }
+    }
+    &.feature {
+        position: relative;
+        max-width: calc(100% - 400px);
+        margin: 0 auto 12.5%;
+        width: 100%;
+    }
+    &.treatments {
+        margin-bottom: 10%;
+    }
+    &.blog {
+        background-color: v.$theme-color5;
+        position: relative;
+        overflow: hidden;
+        &::before {
+            @include m.bg-img("svg/bg-deco03.svg");
+            @include m.position(absolute, 0, auto, auto, 0);
+            content: "";
+            max-width: 100%;
+            margin-top: -10%;
+            width: 100%;
+            height: 255px;
+            transform: rotate(180deg);
+            pointer-events: none;
+        }
+        &::after {
+            @include m.bg-img("svg/bg-deco03.svg");
+            @include m.position(absolute, auto, auto, 0, 0);
+            content: "";
+            max-width: 100%;
+            width: 100%;
+            height: 255px;
+            pointer-events: none;
+        }
+    }
+    &.recruit {
+        margin: 5% 0 10%;
+        position: relative;
+        overflow-x: clip;
+    }
+    &.clinic {
+        margin-bottom: 10%;
+    }
+}
+
+// 下層ページ
+.l-main {
+    &.page {
+        margin: 0 auto 15rem;
+        max-width: calc(100% - 400px);
+        overflow: visible;
+    }
+}
+
+.l-container {
+    &.breadcrumb {
+        margin: 2.5rem auto 10rem;
+        max-width: calc(100% - 400px);
+    }
+    &.single-blog {
+        overflow: hidden;
+        position: relative;
+    }
+    &.clinic-message {
+        margin: 0 calc(49% - 50vw);
+        width: 100vw;
+        overflow: hidden;
+    }
+    &.clinic-aboutus {
+        margin: 10% 0;
+        position: relative;
+        &::before {
+            content: "";
+            background-color: v.$theme-color5;
+            border-radius: v.$r-l;
+            display: inline-block;
+            width: 100%;
+            height: 90%;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            margin-left: -15%;
+            margin-top: 10%;
+            z-index: v.$z-1;
+        }
+    }
+    &.clinic-facility {
+        margin: 10% 0;
+    }
+    &.clinic-faq {
+        position: relative;
+    }
+    &.recruit-feature {
+        margin: 10% 0;
+    }
+    &.recruit-job-desc {
+        margin: 10% 0;
+    }
+}

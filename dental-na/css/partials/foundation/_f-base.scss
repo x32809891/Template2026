@@ -1,0 +1,178 @@
+@use "f-variables" as v;
+@use "../foundation/f-mixins" as m;
+
+// サイト全体で共通のスタイルを定義する
+/* ▶ fonts */
+@font-face {
+    font-display: swap;
+    font-family: "Zen Maru Gothic";
+    src: url("../fonts/ZenMaruGothic-Regular.woff2") format("woff2"),
+            url("../fonts/ZenMaruGothic-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ▶ common */
+:root {
+    @include m.theme(
+        v.$theme-color1,// primary
+        v.$theme-color2,// secondary
+        v.$theme-color3,// tertiary
+        v.$text-black,// text
+        v.$white,// surface
+        v.$dkGy,// stroke
+        v.$Wt,// bg
+        v.$blue,// link
+    );
+}
+:where(nav li)::before {
+    content: "";
+}
+:focus-visible {
+    outline: 1px solid v.$theme-color1;
+}
+::backdrop {
+    background: rgba(v.$black, .4);
+}
+::selection {
+    background-color: rgba(v.$theme-color1, .3);
+    color: v.$text-black;
+}
+
+/* ▶ base style */
+html, body {
+    scroll-behavior: auto;
+}
+body {
+    background-color: v.$white;
+    color: v.$text-black;
+    color-scheme: light dark;
+    counter-reset: cntr;
+    font-family: v.$main-fonts;
+    font-feature-settings: "palt" 1;
+    font-size: v.$regular;
+    font-weight: 500;
+    letter-spacing: .09em;
+    line-break: strict;
+    line-height: v.$lh-base;
+    min-height: 100svh;
+    // overflow: hidden;
+    scrollbar-gutter: stable both-edges;
+    text-rendering: optimizeLegibility;
+    word-break: break-all;
+}
+a {
+    display: block;
+    text-decoration: none;
+}
+a[href^="tel:"] {
+    pointer-events: auto;
+}
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 ;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+iframe {
+    max-width: 100%;
+}
+
+/* ▶ contact form 7 */
+.wpcf7-form {
+    max-width: calc(100% - 400px);
+    margin: 0 auto;
+    p {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        align-items: center;
+        gap: 12px 24px;
+        padding: 16px 0;
+        border-bottom: 1px solid v.$ltGy;
+        margin: 0;
+    }
+    label {
+        display: contents;
+        font-weight: 600;
+    }
+    br {
+        display: none;
+    }
+    .wpcf7-form-control-wrap {
+        display: block;
+        width: 100%;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid v.$mdGy;
+        border-radius: v.$r-s;
+        font-size: v.$medium-1;
+        font-family: inherit;
+        font-weight: 400;
+        transition: border-color .2s ease;
+        &:focus {
+            outline: none;
+            border-color: v.$theme-color2;
+        }
+    }
+    textarea {
+        min-height: 160px;
+        resize: vertical;
+    }
+    .wpcf7-not-valid-tip {
+        display: block;
+        grid-column: 1 / -1;
+        margin: 4px 0 0;
+        font-size: 12px;
+        color: v.$red;
+    }
+    p:has(.wpcf7-submit) {
+        display: block;
+        text-align: center;
+        border-bottom: none;
+        margin-top: 24px;
+    }
+    .wpcf7-submit {
+        @include m.flex(row, nowrap, space-between, center);
+        background-image: 
+        linear-gradient(120deg, v.$theme-color1, rgba(255, 255, 255, 0)),
+        linear-gradient(185deg, v.$theme-color2, rgba(255, 255, 255, 0)),
+        linear-gradient(340deg, v.$theme-color3, rgba(255, 255, 255, 0));
+        border-radius: v.$r-full;
+        color: v.$white;
+        font-weight: 600;
+        max-width: 295px;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        position: relative;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: opacity .2s ease;
+        &:hover {
+            opacity: .8;
+        }
+        &:disabled {
+            opacity: .5;
+        }
+    }
+    .wpcf7-spinner {
+        margin-left: 12px;
+        vertical-align: middle;
+    }
+}
+.wpcf7-response-output {
+    max-width: 720px;
+    margin: 16px auto 0 !important;
+    padding: 12px 20px !important;
+    border-radius: v.$r-s !important;
+    text-align: center;
+}
